@@ -1,4 +1,5 @@
 * **[帮助主页](/README.md)**
+* **[GitHub](https://github.com/Sayobot/SayoDevice_manual)**
 * **网页版**
   * [新版（推荐）](https://app.sayodevice.com)
   * [旧版（不推荐）](https://old.sayodevice.com)
