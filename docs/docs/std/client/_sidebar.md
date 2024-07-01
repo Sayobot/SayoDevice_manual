@@ -1,0 +1,15 @@
+<!-- docs/_sidebar.md -->
+
+* [返回首页](/README.md)
+* [界面说明](/docs/std/client/README.md)
+* [按键](/docs/std/client/keyboard.md)
+* [灯光](/docs/std/client/light.md)
+* [色表](/docs/std/client/palette.md)
+* [字符串](/docs/std/client/string.md)
+* [屏幕编辑](/docs/std/client/screen.md)
+* [脚本](/docs/std/client/script.md)
+* [录制脚本](/docs/std/client/record.md)
+* [脚本例程](/docs/std/client/codebook.md)
+* [备份](/docs/std/client/backup.md)
+* [选项字节](/docs/std/client/option_byte.md)
+* [触摸灵敏度](/docs/std/client/touch.md)
