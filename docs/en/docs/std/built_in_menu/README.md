@@ -1,21 +1,17 @@
 # Welcome to SayoDevice
 
-### ☜Catalogs on the left <!-- {docsify-ignore} -->
+### ☜ Help directory on the left <!-- {docsify-ignore} -->
 
->## HowTo  
-**Press and hold knob** into built in menu after bootup  
-**Press knob to confirm** ，**Rotate the knob to scroll the menu** after into built in menu
+> ## Operation instructions
+>
+> After the keyboard is turned on, **long press the knob** to enter the built-in menu
+> After entering the menu, **click the knob to confirm**, **rotate the knob to scroll and select**
 
-**If you have found any difference between this manual to your menu, please [Cheak firmware update](/en/docs/std/web_hid/README.md)**  
-**If you already have the latest firmware, maybe just wait this maual update**
+!> **If you find any discrepancies with your menu when reading this document, please [check for firmware updates](../web_hid/firmware_update.md)**
+**If it is already the latest version, please contact Xiaoye to urge the update of this document**
 
 ---
 
-> ## Menu
+> ## Menu interface
 
-![there should have a image,please refresh the website](../../../../docs/std/built_in_menu/img/menu_1.png)
-![there should have a image,please refresh the website](/img/menu_en.png)
-
-**[显示 Language](/en/docs/std/built_in_menu/display.md)** **[Display](/en/docs/std/built_in_menu/display.md)**  
-**[按键 Button](/en/docs/std/built_in_menu/key.md)**  
-**[设备 Device](/en/docs/std/built_in_menu/device.md)**
+![Where is the picture? Try refreshing it? ](img/menu_1.png)

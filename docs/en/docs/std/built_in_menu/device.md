@@ -1,39 +1,50 @@
-# Device
+# Device Settings
 
-![there should have a image,please refresh the website](/img/menu_en_device.png)  
-![there should have a image,please refresh the website](/img/menu_en_reset.png)
+![Where's the picture? Try refreshing? ](img/menu_device.png)
 
-> ## Refresh rate  
-Setting USB polling rate of keypad
+> ## USB Report Rate
+>
+> Modify the device's report rate
 
-![there should have a image,please refresh the website](/img/menu_en_pollingrate.png)
-
----
-
-> ## Device  
-About device
-
-![there should have a image,please refresh the website](/img/menu_en_about.png)
-
-**HW** Hardware Versions  
-**FW** Firmware Versions
+![Where's the picture? Try refreshing? ](img/menu_pollingrate.png)
 
 ---
 
-> ## Key count  
-Total key stroke counter from last time reset it
+> ## Device info
+>
+> Nothing to do here
 
-![there should have a image,please refresh the website](/img/menu_en_counter.png)  
-![there should have a image,please refresh the website](/img/menu_en_counter_reset.png)
+![Where's the picture? Try refreshing? ](img/menu_about.png)
 
-**Reset key count** Reset it
+- **HW**  
+Hardware version (may be inaccurate)
+- **FW**  
+Firmware version (major version)
 
 ---
 
-> ## Factory recovery  
-**Will not reset Key counter**
+> ## Key Count
+>
+> Displays how many times you have pressed each key since the factory or last reset of the key count
 
-![there should have a image,please refresh the website](/img/menu_en_reset_1.png)
+![Where's the picture? Try refreshing? ](img/menu_counter.png)
+![Where's the picture? Try refreshing? ](img/menu_counter_reset.png)
 
-**Factory recovery** confirm reset keypad  
-**jump to bootloader** into bootloader mode for firmware update
+- **Reset key count**  
+Reset key count  
+
+---
+
+> ## Factory recovery
+>
+> Some reset operations
+
+![Where's the picture? Try refreshing it? ](img/menu_reset_1.png)
+
+- **Factory recovery**  
+(**will not reset key count**)
+
+- **jump to bootloader**  
+Enter firmware update mode
+- **Reset image data**  
+Clear custom images

@@ -1,20 +1,11 @@
 # Select your device type
 
+Only by selecting the correct one can you see the content you want
 
->## Wired Model:
+## [Keyboard function](std/README.md)
 
-### [Single Knob](/en/docs/knob/README.md)
+## [Wireless options](ble/README.md)
 
-### [O3C / O3C++](/en/docs/std/built_in_lcd.md)
+## [Volume controller (knob)](knob/README.md)
 
-### [1 key](/en/docs/mini/README.md) ` `  [2 keys](/en/docs/mini/README.md) ` ` [3 keys](/en/docs/mini/README.md) ` ` [4 keys](/en/docs/mini/README.md) 
-### [5 keys no led](/en/docs/mini/README.md)  ` `   [5 keys RGB LED](/en/docs/std/README.md)
-
-### [6 keys no led](/en/docs/mini/README.md)   ` `  [6 keys RGB LED](/en/docs/std/README.md)
-
-### [7 keys no led](/en/docs/mini/README.md)  ` `   [7 keys RGB LED](/en/docs/std/README.md)
-
-### [More than 8 keys](/en/docs/std/README.md)
-
->## Wireless Model:
-### [Wireless Model](/en/docs/ble/README.md)
+## [screen built-in menu](std/built_in_menu/README.md)

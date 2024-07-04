@@ -1,58 +1,68 @@
-# Lighting settings
+# Light settings
+!> Only devices with key lights support this feature
 
-> ## Set the specified color  
-Change the light mode to static (of course you can also want other effects),
-Change the color mode to Select Color.  
-- Change the light color to ice blue (#00ffff)  
+> ## Set the desired color
+>
+> Change the light mode to static (of course you can also use other effects),
+> Change the color mode to a specified color.
+
+- Change the light color to ice blue (#ff00ff)  
 ![](/img/led_col.jpg)  
 
-> ## Turn off the light  
-**Same as above, setting it to black means it is turned off. RGBA value 0 0 0 0**
+Tip: Click the **pipette icon** to **pick the color from the screen**
+
+> ## Turn off the light
+>
+> **Same as above, set it to black to turn it off. RGB value 0 0 0** (#000000)
 
 ---
-> ## Detailed explanation of light mode 
 
-- static  
+> ## Light mode details
+
+- Static  
 Set a fixed color,  
-Can be implemented in conjunction with events **Press to light and release to turn off** etc.
+Can be used with **key events** to achieve **press on, release off**, etc.  
+
 - Indicator light  
-Can be set to Numlock, CapsLock, ScrollLock and other status indicators of the keyboard.  
-- breathe  
-Achieve breathing effect. If the color mode is selected, the color table can cycle through the colors.  
-You can set the light hold and off hold to make the light stay on for a period of time when it is fully on and fully off respectively. Unit 8ms  
-- take one breath  
-Same as above, but you need to cooperate with the lighting event **Press to execute lighting configuration** to achieve the effect of breathing once for each key press.  
+Can be set to the keyboard's **Numlock CapsLock ScrollLock** and other status indicators.
+
+- Breathing  
+Achieve a breathing effect. Use variable color with color mode  
+You can set the light-on hold and light-off hold to make the light stay for a period of time when it is fully lit and fully off respectively. Unit 8ms  
+- Breath once  
+Same as above, but need to cooperate with the light event **Execute light configuration after pressing** to achieve the effect of breathing once for each key press.
 - Gradient  
-This mode only works with **Color Table Loop** or **Random Color** in the color mode.
-- switch  
-The color can be switched according to the specified frequency.  
-The lighting time interval needs to be set at the same time. Unit 8ms  
-This mode only works with **Color Table Loop** or **Random Color** in the color mode.  
-- switch once  
-Same as above, but you need to cooperate with the lighting event **Press to execute lighting configuration** to achieve the effect of switching every time the key is pressed.  
-- flashing  
-Can flash according to the specified frequency and duration.  
-The lighting time and off time interval need to be set at the same time. Unit 8ms  
+When the color mode** is not the specified color**, it is effective.
+- Switch  
+You can switch colors at the specified frequency,
+You need to set the lighting time interval at the same time. Unit 8ms
+When the color mode** is not the specified color**, it is effective.
+- Switch once  
+Same as above, but need to cooperate with the light event **Execute light configuration after pressing** to achieve the effect of switching once for each key press.
+- Flash  
+You can flash at the specified frequency and duration.
+You need to set the lighting time and the time interval for the light-off at the same time. Unit 8ms
 - Flash once  
-Same as above, but you need to cooperate with the lighting event **Press to execute lighting configuration** to achieve the effect of flashing once every time the key is pressed.  
-- fade  
-Need to cooperate with lighting events **Press to execute lighting configuration**  
+Same as above, but need to cooperate with the light event **Execute light configuration after pressing** to achieve the effect of flashing once for each key press.
+- Fade  
+Need to cooperate with light events **Press to execute light configuration**
 - Fade in  
-Need to cooperate with lighting events **Press to execute lighting configuration**  
+Need to cooperate with light events **Press to execute light configuration**
 
----  
+---
 
-> ## Detailed explanation of color mode  
+## Color mode details
 
-- Select color    
-Set the specified color,  
-Black equals turning off the lights.  
+- Specify color  
+Set a desired color,  
+Black is equal to turning off the light.  
 The darker the color, the lower the brightness.  
-- Color Table cycle  
-Cycle through colors sequentially in the keyboard's Color Table  
-- Random Color Table  
-Pick a random color from the keyboard Color Table  
-- random color    
-Relative to color palette randomness, true randomness may be black (not bright) or white  
+
+- Color table cycle  
+Cycle the colors in the keyboard's built-in color table in sequence  
+- Color table random  
+Randomly select colors in the keyboard's built-in color table  
+- Random color  
+Compared with color table random, true random may be black (not bright) or white  
 
 ---

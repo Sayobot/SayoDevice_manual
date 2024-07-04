@@ -1,53 +1,42 @@
-# Display
+# Display settings
 
-![there should have a image,please refresh the website](../../../../docs/std/built_in_menu/img/menu_display.png)
-![there should have a image,please refresh the website](/img/menu_en_display.png)
+![Where's the image? Try refreshing it? ](img/menu_display.png)
 
-> ## Language 语言
+> ## Back light
 
-![there should have a image,please refresh the website](../../../../docs/std/built_in_menu/img/menu_language.png)
-![there should have a image,please refresh the website](/img/menu_en_language.png)
+![Where's the image? Try refreshing it? ](img/menu_backlight.png)
 
-**中文** Set built in menu Language to Chinese
+### Standby light
 
-**English** Set built in menu Language to English
+If your computer **does not lose power to the USB after shutting down**, **turning on** this option will turn off the screen backlight of the small screen **after shutting down your computer**  
 
----
+### Screensaver timeout
 
-> ## Backlight
-
-![there should have a image,please refresh the website](/img/menu_en_backlight.png)
-
-### StandbyLight
-
-If your PC/Mac **don't cut off USB power after power off** **turn on** this option to **turn off built in screen** after power off your PC/Mac
-
-### ScreenSaver
-
-Set time to show sleep screen if you don't use it
-
-<small>~~set it in web or software will be much easier~~</small>
+Set how long to display the sleep screen when idle
 
 ---
 
-> ## Main screen  
-**!!! important:choose any template will overwrite your custom main screen layout !!!**  
-**!!! all key layer use same one screen layout !!!**
+> ## Main screen
 
-![there should have a image,please refresh the website](/img/menu_en_template.png)
+![Where's the image? Try refreshing it? ](img/menu_template.png)
 
-### template：default
+!> **!!!Warning: Selecting a template will overwrite your custom home screen settings!!!**
 
-Set screen to default layout
+### Template->Default
 
-### template：bongocat
+Set the main screen to the default style preset by SayoDevice in your keyboard
 
-Set screen to built in bongocat layout
+### Template->bongocat
 
-### key count
+Set the main screen to the bongocat style preset by SayoDevice in your keyboard
 
-Set how to count key stoke of the counter shows on screen
 
-**ALL** All key stroke from last time **reset key counter**
+### Key count
 
-**single** key stroke will begin
+Select the key counter component on the main screen to display the keystrokes from the time to now
+
+- **All**  
+  Start from the factory or the last **Reset key count**
+
+- **This time**  
+  Count from this boot

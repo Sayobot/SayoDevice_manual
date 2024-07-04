@@ -1,112 +1,262 @@
-# Key setting
+# Key Function
 
-> ## Set a single key  
+> # Set Keys
 
-Click a button, and the button mode changes to **Default**,  
-Just select the key you need from **Modification Keys** or **General Keys**.  
-**Modifier Key** Allows for multiple selections.  
+1. Select **Default** for Key Mode,  
 
-**example**
+2. Click the box below to select keyboard keys  
 
-- **Set A key**  
-General key selection **A** key  
-![](/img/A.jpg)
+- **Ctrl Shift Alt Win** You can **not select, select one or more**.  
+- **Other keys** can **not be selected or selected**  
+- Click the key again to deselect
 
-- **Set Ctrl Key**
-Modifier key selection **Left Ctrl**.  
-General key selection **None** .  
-Note: The keyboard has two Ctrls, *Left* is the left one and *Right* is the right one.
-![](/img/Ctrl.jpg)
----
+<font size=5>![Alt ​​text](img/1A86E8BFAF2783C15BCDA62E980FAF35.png)Give a few examples</font>
 
-> ## Set shortcut key combination
+- **Set A**  
+![](img/A.jpg)  
 
-Change button mode to **Default**,  
-Just select the keys you need between **modifier keys** and **general keys**.  
-
-- **Settings Copy shortcut key Ctrl+C**  
-![](/img/Ctrl+C.jpg)  
-
-- **Settings screenshot shortcut key Win+Shift+S**  
-![](/img/win+shift+s.jpg)  
-
-Note: (If you don’t understand, please ignore this article) After sending the modifier key, it will automatically delay 10ms before sending the general key. This is because some software (for example: remote desktop) will not recognize keys pressed simultaneously as shortcut keys. , must be done in sequence; there will be no delay if you only set a single key.
+- **Set Ctrl key**  
+![](img/Ctrl.jpg)  
 
 ---
 
+> # Set shortcut keys
 
-> ## Set two consecutive key operations
+- **Set copy shortcut key Ctrl+C**  
+![](img/Ctrl+C.jpg)
 
-The key mode is changed to **Two-step keyboard operation**,  
-Then set two sets of keys, the method is the same as the **Default** mode.
-
-- **Set one-click paste + enter**  
-![](/img/2setp_paste+enter.jpg)
-
----  
-
-
-> ## Set mouse left button, right button, middle button, etc.
-
-Change the key mode to **Mouse**,  
-Just select the button you need in **Mouse Keys**.  
-
-- **Set left mouse button**  
-![](/img/mouse_key_left.jpg)
-
----  
-
-> ## Set mouse cursor movement and scroll wheel
-
-Change the key mode to **Mouse**,  
-In **Mouse Keys** don't select the key,  
-- **X** means horizontal movement, negative numbers move left. Positive numbers shift right. The higher the number, the faster the speed.  
-- **Y** is vertical movement, negative numbers move up and positive numbers move down. The higher the number, the faster the speed.  
-- **Scroll** is the mouse wheel. Scroll down for negative numbers and up for positive numbers.
-
-- **Set to scroll up**  
-![](/img/scroll_up.jpg)
-
----  
-
-> ## joystick button
-
-This is an additional add-on and is only available on Windows. mac system**! don't want! ** Turn on.  
-Turn on the HID function in the device options **joystick** Save and re-insert.  
-1. Change button mode to **Game Controller**,  
-2. Then select the button number.  
-
-This button has nothing to do with any keyboard button on the game controller. The game needs to support custom buttons.  
-
----  
-
-> ## Button layer (FN)
-This keyboard typically supports multiple keyboard configurations.   
-You can use keys to switch layers
-
-Click a button with the mouse, change the button mode to **FN**, and select the button level you want to switch to;  
-</br>
-After pressing and holding this button, and then pressing other buttons, the set FN layer   function will take effect at this time;  
-Release the FN button to restore basic layer functions.  
-
-If there is a button light, you can set different colors for different layers in the lighting tab to view the layer status.  
--Set a FN key  
-![](/img/FN1.jpg)  
+- **Set screenshot shortcut key Win+Shift+S**  
+![](img/win+shift+s.jpg)
 
 ---
 
-> ## Button layer (SW)
-Different from FN, which takes effect by pressing and holding, this function switches directly to the corresponding layer.
+> # Set two sets of consecutive key operations
 
-Click a button with the mouse, the button mode changes to **SW**, and select the button level you want to switch to;
-When this button is pressed, it switches to the set FN layer function;
-You may also need to set a SW on the target layer to return to the base layer.
+!> In this mode, one set of shortcut keys is executed after pressing, and another set of shortcut keys is executed after releasing the key
 
-- A single button corresponds to one layer
-Set a button mode to SW and make it the same for each layer.
+1. Select the button mode **two-step operation**,  
+2. Set two groups of buttons, the method is the same as above  
+ 
+- **Set one-key paste + enter**  
+![](img/2setp_paste+enter.jpg)
 
-- Single button loop layer
-Select a button;
-Set SW 1 on the base layer, SW 2 on the FN1 layer, SW 3 on the FN 2 layer... and set a SW 0 on the last layer.
+---
+
+> # tap or hold
+
+!> This mode is not compatible for knobs
+
+1. Select the button mode **tap or hold**,
+2. Then set two groups of buttons, the method is the same as above
+
+- **Set tap A and hold B**  
+![](img/tap_and_hold.jpg)  
+
+- **Set tap to pause and hold to next song**  
+![](img/tap_and_hold_mu.jpg)  
+
+---
+
+> # Mouse mode
+>
+> In this mode, you can set a button as **mouse left button, mouse right button, scroll wheel press** or **cursor moves up and down, left and right, scroll wheel up and down**
+
+- **Set mouse left button**  
+In **mouse button** Select a button in the Options box. Set the following three values ​​to 0  
+![](img/mouse_key.jpg)
+
+- **Set cursor down**  
+In the **Mouse Button** option box, cancel all buttons, and then fill the **Mouse Move Y** input box with -1   
+![](img/mouse_move_down.jpg)  
+
+- **Set wheel down**  
+In the **Mouse Button** option box, cancel all buttons, and then fill the **Scroll** input box with -1  
+
+```
+X positive number moves right, negative number moves left  
+Y positive number moves up, negative number moves down  
+Roller positive number rolls up, negative number rolls down  
+The larger the value, the faster the movement speed  
+```
+
+---
+
+> # Multimedia Control  
+>
+> Control system volume, switch songs, screen brightness, etc.  
+> _Screen brightness function is only suitable for laptops or some screens that support brightness adjustment in the system_  
+> _Step parameter is multiple execution, set to 1 to execute once, 2 to execute twice. 0 will also be executed once_  
+
+- **Set mute switching**  
+![](img/mute.jpg)
+
+---
+
+> # Keyboard + LED control  
+>
+> _The shortcut key can be unselected to achieve the effect of only switching the light state_  
+> _Including Num lock, CapsLock, Scroll Lock_  
+
+!> _This mode will also trigger the indicator-related keys to update the corresponding status before and after the shortcut key is triggered_  
+
+- **Turn on the numlock indicator and turn off the capslock indicator**  
+![](img/key_and_led.jpg)
+
+---
+
+> # A+B+C+D  
+>
+> _This mode can press the selected keys in sequence and then release them_  
+> _Applicable to shortcut keys that require strict control of the key sequence, or shorter key sets. _  
+> _Select up to 4 keys_  
+
+---
+
+> # One-click password
+>
+> _In this mode, you can enter the preset ASCII string in sequence_  
+> _You can choose to add an arbitrary key after the string, such as Enter_  
+> _You can customize the input interval (milliseconds) and lock case options_  
+> _If the input content is different from the setting, you can try to enable the lock case function. After turning it on, the input content will not be affected by the input method. _  
+> _For French keyboards, please change the key layout in Settings_  
+
+- **Set one-click input ABCdef123 and then Enter**  
+
+1. Enter the content in **Password Book**  
+![](img/pwd_data.png)  
+
+2. In **Keys**, change the key mode to **One-click password** and select the saved password number  
+![](img/pwd.jpg)  
+
+- Additional keys
+You can insert an arbitrary key after the password, such as Enter.  
+
+- Input interval  
+Password input speed, in milliseconds, default value 2.  
+Generally no need to modify. If you find that you miss keys when inputting, you need to increase this value  
+
+- Lock uppercase and lowercase  
+Automatically lock the keyboard uppercase when entering the password. After turning on this function, the password input will not be affected by the input method.
+
+- Other keyboard layouts  
+The default keyboard layout is ANSI. If you need to change to AZERTY layout, please click "Device Options" to turn it on  
+
+---
+
+> # One-click web page  
+>
+> One-click to open the set URL  
+
+!> Some devices do not support this function  
+
+Applicable to Windows system  
+Setting method same key password  
+
+---
+
+> # One-click poetry  
+>
+> One-click to output a string of text  
+
+!> Some devices do not support this function  
+
+!> ** There may be shortcut key conflicts. **  
+Function principle:  
+Press Alt+Number keys on the small numeric keyboard to directly enter the character code.  
+Applicable to Windows system  
+
+The setting method is similar to one-key password, but enter the content in the **string** tab  
+
+Supports two encoding methods (GBK\Unicode)  
+
+Different software may require **different** encodings. If you enter garbled characters, you can **switch to another encoding**  
+
+---
+
+> # shortcut \*3  
+
+!> Some devices do not support this function  
+
+In this mode, you can type three shortcut keys continuously, such as **select all+copy+switch tab card (Ctrl+A Ctrl+C Ctrl+TAB)**  
+
+---
+
+> # Cycle input  
+>
+> You can select 1~3 keys. When you hold down the keys, press them in sequence.   
+> Release the keys to stop  
+> Cycle interval n\*6 ms  
+
+- **Cycle down direction+space**  
+![](img/while_down_and_space.jpg)  
+
+---
+
+> # joystick button  
+
+!> This is an additional add-on and is only applicable to Windows. Do not enable it on Mac system.  
+If enabled by mistake, use Windows system to turn it off.  
+
+In the device options, turn on the HID function of **joystick**, save and re-insert,  
+Change the button mode to **game controller**,  
+Then select the button number.  
+This button has nothing to do with any button on the game controller, and the game needs to support custom buttons.  
+
+---
+
+> # key to axis
+>
+> This mode can map a linear key to a joystick signal (need to enable device function: controller)  
+> or mouse cursor movement (need to enable device function: relative mouse)  
+
+!> Some devices do not support this function  
+
+- Axis  
+Optional X Y Z rX rY rZ  
+- mouse X Y  
+Two direction axes of the mouse  
+
+- Alignment  
+Optional left alignment, right alignment, center left alignment, center right alignment  
+
+---
+
+> # Numlock virtual multi-layer  
+
+!> _This mode is only applicable to devices whose hardware does not support FN layer_  
+_For devices that support FN layer, please use FN function_  
+
+- **When the number lock is turned on, the key is A, and when it is turned off, the key is B**  
+![](img/num_sw.jpg)  
+
+---
+
+> # Key layering (FN)  
+
+!> Some devices do not support this function  
+
+1. Change a key mode to **FN** and select the target layer to switch to  
+2. Press this key and the keyboard will switch to another layer of functions  
+3. Release this key to return to the original layer  
+
+![](img/FN.jpg)  
+
+---
+
+> # Key Layering (SW)  
+
+!> Some devices do not support this function  
+ 
+Similar to the FN function, but it will not return to the original layer when the key is released  
+
+> # Bluetooth Multi-device Switching (BLE_SW)  
+
+!> Some devices do not support this function  
+
+Only Bluetooth mode is valid  
+
+- Set a key to quickly switch devices  
+
+- If the device is not online, it will automatically enter pairing mode (white LED flashes)  
 
 ---
