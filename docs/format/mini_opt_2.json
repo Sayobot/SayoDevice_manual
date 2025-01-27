@@ -1,0 +1,41 @@
+{
+    "version":"1.0",
+    "title":"编码器通道",
+    "multiple_choice":true,
+    "input_type":"choice",
+    "defVal":0,
+    "data": [
+        {
+            "code": 1,
+            "name": "channel 1"
+        },
+        {
+            "code": 2,
+            "name": "channel 2"
+        },
+        {
+            "code": 4,
+            "name": "channel 3"
+        },
+        {
+            "code": 8,
+            "name": "channel 4"
+        },
+        {
+            "code": 16,
+            "name": "channel 5"
+        },
+        {
+            "code": 32,
+            "name": "channel 6"
+        },
+        {
+            "code": 64,
+            "name": "channel 7"
+        },
+        {
+            "code": 128,
+            "name": "channel 8"
+        }
+    ]
+}
