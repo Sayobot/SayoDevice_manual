@@ -1,19 +1,22 @@
 # Welcome to SayoDevice
 
-### ☜ Help directory on the left <!-- {docsify-ignore} -->
+### ☜ Documentation Menu <!-- {docsify-ignore} -->
+*Use the menu on the left to navigate through the documentation*
 
-> ## Software address
+> ## Software Access
 
-### No need to download, just open  [ https://app.sayodevice.com ](https://app.sayodevice.com) with your browser to set the function <!-- {docsify-ignore} -->
+### No Installation Required <!-- {docsify-ignore} -->
+Simply open [https://app.sayodevice.com](https://app.sayodevice.com) in your browser to configure your device.
 
-Recommended to use [Chrome browser](https://www.google.com/chrome) or **Edge browser**
+We recommend using [Chrome](https://www.google.com/chrome) or **Microsoft Edge** browsers for optimal compatibility.
 
-### [Download offline version](https://dl.sayobot.cn/setting_v3.zip) <!-- {docsify-ignore} -->
+### [Download Offline Version](https://dl.sayobot.cn/setting_v3.zip) <!-- {docsify-ignore} -->
+*For users who prefer an offline installation*
 
 ---
 
-> ## Start
+> ## Getting Started
 
-![text](img/main.jpg)
+![Main interface](img/main.jpg)
 
 ---

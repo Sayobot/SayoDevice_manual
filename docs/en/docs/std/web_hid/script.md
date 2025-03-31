@@ -1,442 +1,439 @@
-# 设备脚本
+# Device Scripts
 
-!> 仅部分设备支持此功能  
-Awaiting translation
+!> This feature is only supported by certain device models
 
-## 前言
+## Introduction
 
-**概述**
+**Overview**
 
-可以用脚本实现一些复杂操作，包括但不限于
+With scripts, you can implement complex operations, including but not limited to:
 
-- 包括键盘、鼠标在内的一系列的操作组合
-- 循环，整体循环局部循环
-- 控制 LED 灯光效果
-- 更复杂的操作（丰富的指令和接口）
+- A sequence of keyboard and mouse operations
+- Loops (both global and local)
+- Control of RGB lighting effects
+- Advanced operations (utilizing a rich set of commands and interfaces)
 
-**导读**
+**Reading Guide**
 
-- 如果你没有编程基础，或不想深入研究，仅看前 3 章即可
-- 一般情况，直接看指令表会更快找到答案
-- 如果你看不懂，请不要停下。把文档完整读一遍后再看就明白了
-- 。。。
+- If you have no programming background or don't want to dive deep, you can just read the first 3 chapters
+- For quick reference, the command table at the end of this document often provides the fastest answers
+- If something is unclear, don't stop reading - understanding will come after reading the entire document
+- For advanced users, the complete command syntax is documented in the later sections
 
-## **0.入门**
+## **0. Getting Started**
 
-**脚本是什么？**
+**What is a script?**
 
-- 脚本就是脚本，又称作宏。
-- 脚本导演了一个序列事件的发生
+- A script (also known as a macro) is a sequence of programmed actions
+- Scripts orchestrate a series of events to happen in a defined order
 
-**脚本能做什么？**
+**What can scripts do?**
 
-这取决于你自己
+The possibilities are limited only by your imagination:
 
-- 你可以使用脚本操作键盘输出按键、操作鼠标进行移动/点击等
-- 也可以使用脚本来控制 RGB 灯光效果
-- 甚至可以编写一个硬件计算器
+- Execute keyboard input and mouse movements/clicks
+- Control RGB lighting effects
+- Even create a hardware calculator with the right commands
 
-**脚本是怎么运行的？**
+**How do scripts run?**
 
-- 一般情况下，按键作为键盘的开关，按下按键即可执行对应的脚本
-- 执行脚本的同时，按键设置的 4 个参数将被传入脚本的寄存器
-- 脚本的执行顺序是从上至下，顺序执行，并进行对应指令的操作
-- 脚本会一直不停执行直到**延时**、**阻塞**或**退出**指令
+- In most cases, a key acts as a switch - pressing the key executes the associated script
+- When a script runs, the 4 parameters set in the key settings are passed to the script's registers
+- Scripts execute from top to bottom, performing each command in sequence
+- Scripts continue running until they encounter a **delay**, **blocking command**, or **exit instruction**
 
-## **1.最简单的操作脚本**
+## **1. Creating Your First Script**
 
-**脚本编辑界面**  
-![](img/script.jpg)
+**Script Editing Interface**  
+![Script interface](img/script.jpg)
 
-**一个按键操作（上图）**
+**Basic Key Operation (shown above)**
 
-- 最基本的 4 个步骤： 按下、延时、松开、延时（如脚本结束了可以不写延时）
-- 延时单位是毫秒，1 秒=1000 毫秒。
-- 延时至少 1 毫秒，建议至少 5 毫秒。太快电脑会反应不过来
-- 一般人按键在 30 毫秒以上。
+- The most basic sequence has 4 steps: press, delay, release, delay (the final delay can be omitted if it's the end of the script)
+- Delay units are milliseconds (1 second = 1000 milliseconds)
+- Minimum delay is 1 ms, but 5 ms or more is recommended for reliable operation
+- Human key presses typically last at least 30 ms
 
-**将脚本绑定到按键**
+**Assigning Scripts to Keys**
 
-1. 按键模式改成用户脚本+脚本编号 （No.xxx）
-2. 填入参数（**不懂就不用管**）
+1. Change the key mode to "User Script" + script number (No.xxx)
+2. Enter parameters (can be left at defaults for basic scripts)
 
-![](img/script_2_key.jpg)
+![Multiple key operations](img/script_2_key.jpg)
 
-**更多键盘按键**
+**Adding More Keyboard Actions**
 
-- 重复 按下、延时、松开、延时 四个步骤即可
-- 建议直接录制
+- Simply repeat the press, delay, release, delay sequence for each key
+- Using the recording feature is recommended for complex sequences
 
-## **2.基本指令**
+## **2. Basic Commands**
 
-### 延时
+### Delay Commands
 
-- 让脚本暂停一段时间
-- 延时的单位是毫秒
-- 延时数值范围 0\~255（使用变量除外）  
-  **延时倍率**
-  - X1：1=1ms 填多少数字就是多少毫秒
-  - X256：1=256ms 填 1 就是 256 毫秒，2 就是 512 毫秒  
-    **随机延时**
-  - 随机范围 0~ 倍率 x 填写的数值
-  - 填入的数值**绝对**不能为 0
-- 几个例子
-  **延时 0.1 秒（100 毫秒）**
-
-```
--延时 x1 100
-```
-
-**延时 0.3 秒（300 毫秒）**
+- Pause script execution for a specified time
+- Delays are measured in milliseconds
+- Delay values range from 0~255 (unless using variables)  
+  **Delay Multipliers**
+  - x1: 1=1ms (the value entered equals the delay in milliseconds)
+  - x256: 1=256ms (entering 1 creates a 256ms delay, 2 creates a 512ms delay)  
+    **Random Delays**
+  - Random range from 0 to (multiplier × entered value)
+  - The entered value **absolutely cannot** be 0
+- Examples:  
+  **Delay for 0.1 seconds (100 milliseconds)**
 
 ```
--延时 x1 200
--延时 x1 100
-或
--延时 x256 1
--延时 x1 44
+-Delay x1 100
 ```
 
-**范围延时 0.2~0.3 秒**
+**Delay for 0.3 seconds (300 milliseconds)**
 
 ```
-一条固定延时紧跟一条随机延时即可
--延时 x1 200
--延时-随机-x1 100
+-Delay x1 200
+-Delay x1 100
+or
+-Delay x256 1
+-Delay x1 44
 ```
 
----
-
-### 按键操作
-
-- 输出基本的按键操作到电脑
-- 两次按键操作之间必须加延时
-- 支持任意操作嵌套  
-  **键值**
-  - 直接选取按键操作
-  - 操作内容固定  
-    **传参（一般用户无需使用）**
-  - 通过参数传递或变量复用代码或脚本
-  - 操作内容灵活
-- 几个例子
-  **按下按键 A 按下时间 35 毫秒（短按）**
+**Random delay between 0.2~0.3 seconds**
 
 ```
--一般键-键值-按下 A
--延时 x1 35
--一般键-键值-松开 A
--延时 x1 35
-```
-
-**按下按键 A 按下时间 2 秒（长按）**
-
-```
--一般键-键值-按下 A
--延时 x256 7
--延时 x1 208
--一般键-键值-松开 A
--延时 x1 35
-```
-
-**组合键 Ctrl+C**
-
-```
--组合键-键值-按下 Ctrl
--延时 x1 35
--一般键-键值-按下 C
--延时 x1 35
--一般键-键值-松开 C
--延时 x1 35
--组合键-键值-松开 Ctrl
--延时 x1 35
-```
-
-**按下按键 A 按下时间 35 毫秒（短按）并循环执行**
-
-```
--一般键-键值-按下 A
--延时 x1 35
--一般键-键值-松开 A
--延时 x1 35
--地址跳转 0 0
+One fixed delay followed by one random delay:
+-Delay x1 200
+-Delay-Random-x1 100
 ```
 
 ---
 
-### 光标操作
+### Key Operations
 
-- 移动/定位鼠标光标
-- 两次按键操作之间必须加延时，操作后要再来一步清零
-  **轴**
-  - X 屏幕横向坐标，右侧正
-  - Y 屏幕纵向坐标，下侧正
-  - Scroll 滚轮操作
-- 几个例子  
-  **光标右移一段距离**
-
-```
--鼠标-光标移动-值 X轴 10
--延时 x1 35
--鼠标-光标移动-值 X轴 0
--延时 x1 35
-```
-
-**光标下移一段距离**
+- Send basic key operations to the computer
+- Always add a delay between two key operations
+- Supports any operation nesting  
+  **Key Values**
+  - Directly select key operations
+  - Operation content is fixed  
+    **Parameters (advanced users)**
+  - Use parameters or variables to reuse code or scripts
+  - Operation content is flexible
+- Examples:  
+  **Press key A for 35 milliseconds (short press)**
 
 ```
--鼠标-光标移动-值 Y轴 10
--延时 x1 35
--鼠标-光标移动-值 Y轴 0
--延时 x1 35
+-General Key-Value-Press A
+-Delay x1 35
+-General Key-Value-Release A
+-Delay x1 35
 ```
 
-**光标定位到指定坐标（x,y）并左键单击**
+**Press key A for 2 seconds (long press)**
 
 ```
--鼠标-光标定位 100,100
--延时 x1 35
--鼠标键-键值-按下 左键
--延时 x1 35
--鼠标键-键值-松开 左键
--延时 x1 35
+-General Key-Value-Press A
+-Delay x256 7
+-Delay x1 208
+-General Key-Value-Release A
+-Delay x1 35
 ```
 
-## **3.特殊指令**
-
-### 进入点动模式
-
-- 脚本默认是开关模式，按一下开始，（如果还在运行）再按一下停止。
-- 点动模式下，脚本只能通过指令退出
-- 一般放在第一条指令
-
-### 按键阻塞
-
-- 当运行到该步骤时，按键处于指定状态则脚本暂停运行
-- 条件不成立时恢复运行  
-   **举个例子**  
-  **按下是 A，松开是 B**
+**Combination key Ctrl+C**
 
 ```
--一般键-键值-按下 A
--延时 x1 35
--一般键-键值-松开 A
--延时 x1 35
--按键按下时阻塞
--一般键-键值-按下 B
--延时 x1 35
--一般键-键值-松开 B
--延时 x1 35
+-Modifier Key-Value-Press Ctrl
+-Delay x1 35
+-General Key-Value-Press C
+-Delay x1 35
+-General Key-Value-Release C
+-Delay x1 35
+-Modifier Key-Value-Release Ctrl
+-Delay x1 35
 ```
 
-**按一下是 A，再按一下是 B（需要点动模式）**
+**Press key A for 35 milliseconds (short press) in a loop**
 
 ```
--进入点动模式
--一般键-键值-按下 A
--延时 x1 35
--一般键-键值-松开 A
--延时 x1 35
--按键按下时阻塞
--按键松开时阻塞
--一般键-键值-按下 B
--延时 x1 35
--一般键-键值-松开 B
--延时 x1 35
+-General Key-Value-Press A
+-Delay x1 35
+-General Key-Value-Release A
+-Delay x1 35
+-Jump to Address 0 0
 ```
 
-### 按键状态退出
+---
 
-- **当运行到该步骤时**，按键处于指定状态则退出，否则向下执行  
-   **举个例子**  
-  **按住循环输出按键，松开退出**
+### Cursor Operations
 
-```
--一般键-键值-按下 A
--延时 x1 35
--一般键-键值-松开 A
--延时 x1 35
--如果按键松开退出
--地址跳转 0 0
-```
-
-## **4.保留**
-
-## **5.指令架构**
-
-!> 请保证设备固件版本已更新到最新  
-旧版本可能缺少某些寄存器（读出为 0）  
-旧版本可能不支持某些指令（脚本会中途异常退出）
-
-### 整体架构
-
-- 一般情况下，脚本运行在按键上。
-- 每个按键可以看做一个单独的线程，多线程运行。
-- 每个线程寄存器独立，但可通过指针访问共享内存区域。
-- 每个线程有 4 个 8 位参数寄存器（参数通过按键传入，非只读，可以独立重载）、4 个 32 位专用寄存器（作为数据暂存或指针）、1 个 32 位 A 寄存器（用于累加、乘除）、1 个 32 位 B 寄存器（用作除法）。
-
-### 跳转控制
-
-- 为更简单的进行跳转而无需计算地址，引入了 FLAG。
-- 可通过 SET_FLAG 指令将下一条指令的地址压入寄存器。
-- 跳转时，如果寄存器为 0 则向下搜索。
-
-### 寄存器
-
-| 名称           | 取值范围     | 读写 | 用法                                                                       |
-| -------------- | ------------ | ---- | -------------------------------------------------------------------------- |
-| 参数 1~参数 4  | 0~255        | RW   | 按键传入/通用寄存器                                                        |
-| R0~R3          | 0~4294967295 | RW   | 通用寄存器                                                                 |
-| A              | 0~4294967295 | RW   | 累加器/通用寄存器                                                          |
-| B              | 0~4294967295 | RW   | 除法寄存器/通用寄存器                                                      |
-| DPTR           | 0~4294967295 | RW   | 通用寄存器                                                                 |
-| P_R0~P_R3      | ?            | RW   | 共享 RAM 内存区域指针                                                      |
-| P_DPTR         | ？           | RO   | 数据指针                                                                   |
-| ZERO           | 0            | RO   | 怎么读都是 0 嘛                                                            |
-| IO             | 0~255        | RO   | IO 状态，0=按下                                                            |
-| SYS_TIME_MS    | 0~999        | RO   | 系统时间，毫秒                                                             |
-| SYS_TIME       | 0~4294967295 | RO   | 系统时间，秒                                                               |
-| SYS_KB_LED     | 0~255        | RW   | 键盘 LED 状态 R：读取当前状态。 W：修改状态需要操作 2 次，以保证按键释放。 |
-| SYS_KEY_NUM    | 0~4294967295 | RO   | 按键计数                                                                   |
-| SYS_KEY_LAY    | 0~255        | RW   | 键盘层级                                                                   |
-| S_SCRIPT_ADDR  | 0~4294967295 | RO   | 当前脚本步骤地址                                                           |
-| S_DATA_RANDOM  | 0~4294967295 | RW   | R:获取一个随机数 W:设置随机数种子                                          |
-| SYS_BLE_NUM    | 0~7          | WO   | 蓝牙多机切换，写后立即重启切换                                             |
-| S_SELECTED_LED | 0~x          | RW   | 选中操作的 LED 灯。默认选中执行按键本身的 LED                              |
-| GL0~GL127      | 0~4294967295 | RW   | 全局 通用寄存器，默认值未知，用前清零                                      |
-
-## **6.操作指令**
-
-### 按键操作指令
-
-- 支持多种操作，包括键盘、鼠标、多媒体等。
-- 指令支持传值和传参
-- 支持控制按下和松开，支持乱序/嵌套，按下操作后必须有松开步骤
-- 每次操作后至少加 1 毫秒延时，等待主机接收到操作
+- Move/position the mouse cursor
+- Always add a delay between operations, and reset to zero after operations  
+  **Axes**
+  - X: Screen horizontal coordinate, positive to the right
+  - Y: Screen vertical coordinate, positive downward
+  - Scroll: Wheel operation
+- Examples:  
+  **Move cursor right**
 
 ```
-- 组合键
-- 一般键
-- 鼠标键
-- 多媒体
-- Joystick按键
-- 鼠标光标移动
-- 鼠标光标定位
+-Mouse-Cursor Move-Value X-axis 10
+-Delay x1 35
+-Mouse-Cursor Move-Value X-axis 0
+-Delay x1 35
 ```
 
-## **7.跳转指令**
-
-脚本支持流程控制（跳转），可内部跳转或向后一个脚本跳转
-目前支持以下跳转指令
+**Move cursor down**
 
 ```
-JZ  			//jump if (REG == 0)  参数值为0跳转，否则向下执行
-JNZ 			//jump if (REG != 0) 参数值不为0跳转，否则向下执行
-JC  			//jump if (CY == 0) 参数CY值为0跳转，否则向下执行
-JNC 			//jump (if CY != 0) 参数CY值不为0跳转，否则向下执行
-CJNE			//CY = (REG1 < REG2);jump if (REG1 != REG2)  如果REG1小于REG2则置位CY否则清零，如果不相等则跳转，否则向下执行
-DJNZ			//jump if (--REG != 0)  REG先减一，如果不为零跳转，否则向下执行
+-Mouse-Cursor Move-Value Y-axis 10
+-Delay x1 35
+-Mouse-Cursor Move-Value Y-axis 0
+-Delay x1 35
 ```
 
-可以使用更易用的 SET_FLAG 将目标地址写入寄存器，然后使用 JUMP_TO_FLAG 直接跳转到寄存器存储的地址而不需要计算地址
+**Position cursor at specific coordinates (x,y) and left-click**
 
-- 几个例子：
-  · 短按输出 A 长按输出 B  
+```
+-Mouse-Cursor Position 100,100
+-Delay x1 35
+-Mouse Key-Value-Press Left Button
+-Delay x1 35
+-Mouse Key-Value-Release Left Button
+-Delay x1 35
+```
+
+## **3. Special Commands**
+
+### Enter Momentary Mode
+
+- By default, scripts operate in toggle mode: press once to start, press again to stop (if still running)
+- In momentary mode, scripts can only exit through commands
+- Usually placed as the first instruction
+
+### Key Blocking
+
+- When this step executes, the script pauses if the key is in the specified state
+- Execution resumes when the condition is no longer met  
+   **Example:**  
+  **Press A, release B**
+
+```
+-General Key-Value-Press A
+-Delay x1 35
+-General Key-Value-Release A
+-Delay x1 35
+-Block While Key Pressed
+-General Key-Value-Press B
+-Delay x1 35
+-General Key-Value-Release B
+-Delay x1 35
+```
+
+**Press once for A, press again for B (requires momentary mode)**
+
+```
+-Enter Momentary Mode
+-General Key-Value-Press A
+-Delay x1 35
+-General Key-Value-Release A
+-Delay x1 35
+-Block While Key Pressed
+-Block While Key Released
+-General Key-Value-Press B
+-Delay x1 35
+-General Key-Value-Release B
+-Delay x1 35
+```
+
+### Key State Exit
+
+- **When this command executes**, the script exits if the key is in the specified state, otherwise continues  
+   **Example:**  
+  **Hold to continuously output keys, release to exit**
+
+```
+-General Key-Value-Press A
+-Delay x1 35
+-General Key-Value-Release A
+-Delay x1 35
+-Exit If Key Released
+-Jump to Address 0 0
+```
+
+## **4. Reserved**
+
+## **5. Command Architecture**
+
+!> Please ensure your device firmware is updated to the latest version.  
+Older versions may lack certain registers (reading will return 0)  
+Older versions may not support certain commands (scripts may exit unexpectedly)
+
+### Overall Architecture
+
+- Scripts typically run on keys
+- Each key can be considered a separate thread, with multiple threads running simultaneously
+- Each thread has independent registers, but can access shared memory regions via pointers
+- Each thread has 4 8-bit parameter registers (parameters passed through the key, read-write, can be independently reloaded), 4 32-bit special registers (for data storage or pointers), 1 32-bit A register (for accumulation, multiplication, division), and 1 32-bit B register (for division)
+
+### Jump Control
+
+- FLAGS were introduced to simplify jumps without the need to calculate addresses
+- The SET_FLAG command can push the address of the next instruction into a register
+- When jumping, if the register is 0, it will search forward
+
+### Registers
+
+| Name           | Value Range   | R/W | Usage                                                                     |
+| -------------- | ------------- | --- | ------------------------------------------------------------------------- |
+| Param 1~Param 4| 0~255         | RW  | Key input parameters/general registers                                    |
+| R0~R3          | 0~4294967295  | RW  | General registers                                                         |
+| A              | 0~4294967295  | RW  | Accumulator/general register                                              |
+| B              | 0~4294967295  | RW  | Division register/general register                                        |
+| DPTR           | 0~4294967295  | RW  | General register                                                          |
+| P_R0~P_R3      | ?             | RW  | Shared RAM memory area pointers                                           |
+| P_DPTR         | ?             | RO  | Data pointer                                                              |
+| ZERO           | 0             | RO  | Always reads as 0                                                         |
+| IO             | 0~255         | RO  | IO status, 0=pressed                                                      |
+| SYS_TIME_MS    | 0~999         | RO  | System time, milliseconds                                                 |
+| SYS_TIME       | 0~4294967295  | RO  | System time, seconds                                                      |
+| SYS_KB_LED     | 0~255         | RW  | Keyboard LED status. R: Read current status. W: Modify status, requires 2 operations to ensure key release |
+| SYS_KEY_NUM    | 0~4294967295  | RO  | Key count                                                                 |
+| SYS_KEY_LAY    | 0~255         | RW  | Keyboard layer                                                            |
+| S_SCRIPT_ADDR  | 0~4294967295  | RO  | Current script step address                                               |
+| S_DATA_RANDOM  | 0~4294967295  | RW  | R: Get a random number W: Set random number seed                          |
+| SYS_BLE_NUM    | 0~7           | WO  | Bluetooth multi-device switch, immediately restarts and switches after writing |
+| S_SELECTED_LED | 0~x           | RW  | Selected LED for operation. Default is the LED of the executing key       |
+| GL0~GL127      | 0~4294967295  | RW  | Global general registers, default values unknown, clear before use        |
+
+## **6. Operation Commands**
+
+### Key Operation Commands
+
+- Supports various operations including keyboard, mouse, multimedia, etc.
+- Commands support both direct values and parameters
+- Supports press and release controls, allowing for nested/out-of-order operations, but press operations must have corresponding release operations
+- Add at least 1ms delay after each operation to allow the host to receive the operation
+
+```
+- Modifier Keys
+- General Keys
+- Mouse Keys
+- Multimedia Keys
+- Joystick Buttons
+- Mouse Cursor Movement
+- Mouse Cursor Positioning
+```
+
+## **7. Jump Commands**
+
+Scripts support flow control (jumps), allowing internal jumps or jumps to the next script.
+Currently supported jump commands include:
+
+```
+JZ              //jump if (REG == 0)  Jump if parameter value is 0, otherwise continue
+JNZ             //jump if (REG != 0)  Jump if parameter value is not 0, otherwise continue
+JC              //jump if (CY == 0)   Jump if parameter CY value is 0, otherwise continue
+JNC             //jump (if CY != 0)   Jump if parameter CY value is not 0, otherwise continue
+CJNE            //CY = (REG1 < REG2);jump if (REG1 != REG2)  Set CY if REG1 < REG2, otherwise clear; jump if not equal, otherwise continue
+DJNZ            //jump if (--REG != 0)  REG decrements first, jump if not zero, otherwise continue
+```
+
+For easier use, SET_FLAG can write the target address to a register, then JUMP_TO_FLAG can jump directly to the address stored in the register without calculating the address.
+
+- Examples:
+  · Short press outputs A, long press outputs B  
   ![](https://dl.sayobot.cn/script/%E8%84%9A%E6%9C%AC%E4%BE%8B%E5%AD%90/短按A长按B.png)  
-  解析：当按下按键后脚本会启动，然后首先延时等待 200 毫秒再次检查按键按下状态（IO 是按键状态，按下为 0），如果仍然按下则识别为长按并跳转到（R0）保存的地址以输出 B。否则继续执行输出 A 并退出；  
-  虽然此时（R0）并未赋值，但其默认值是 0，程序会自动向后搜索直到 SET_FLAG。
+  Explanation: When a key is pressed, the script starts, then waits 200 milliseconds before checking the key state again (IO is the key state, pressed is 0). If still pressed, it's recognized as a long press and jumps to the address saved in (R0) to output B. Otherwise, it continues to output A and exits.  
+  Note that even though (R0) is not assigned a value here, its default value is 0, and the program will automatically search forward until it finds SET_FLAG.
 
-- 局部循环  
+- Local Loop  
   ![](https://dl.sayobot.cn/script/%E8%84%9A%E6%9C%AC%E4%BE%8B%E5%AD%90/局部循环.png)  
-  次数的参数也可以通过按键传入
+  The count parameter can also be passed through the key
 
-## **8.算数指令**
+## **8. Arithmetic Commands**
 
-待编辑
+To be completed in a future update.
 
-## **9.参数限定**
+## **9. Parameter Specifications**
 
-- 可以使用脚本名称限定传参类型
+- Script names can be used to specify parameter types
 
-| 符号      | 用途                     | 格式                             | 备注                                                                                       |
-| --------- | ------------------------ | -------------------------------- | ------------------------------------------------------------------------------------------ |
-| ~         | 参数结束                 | ~                                | 结束后面是脚本名称（模式名称）                                                             |
-| \\        | 参数类型限定             | \\a\\b\\c\\d~                    | 只解析一个字母（如果脚本名称不是以"\\"、"{"或"\~"开头，即默认按照"\\u\\u\\u\\u~"解析参数） |
-|           | 参数名                   | \\m 组合键\\g 一般键~            | 字母后的就是参数名                                                                         |
-| -         | 自定义选项(单选)         | \\U 开关-0 开-1 关~              | -数值+选项名                                                                               |
-| =         | 自定义选项(多选)         | \\U 鼠标键=1 左键=2 右键=4 中键~ |
-| {}        | 集合                     | {\\m\\g}短按{\\m\\g}长按~        |
-| --------- | ------                   | ----------                       | ---                                                                                        |
-| \\u       | 无符号数 0~255           |
-| \\s       | 有符号数-128-127         |
-| \\\\u     | 无符号数 0~65535         |
-| \\\\s     | 有符号数-32768~32767     |
-| \\\\\\u   | 同上                     |
-| \\\\\\s   | 同上                     |
-| \\m       | 修饰键                   |
-| \\g       | 一般键                   |
-| \\M       | 鼠标键                   |
-| \\c       | 多媒体按键               |
-| \\j       | joystick 按键            |
-| \\a       | joystick 轴              |
-| \\P       | 密码                     |
-| \\S       | 字符串                   |
-| \\A       | 键盘指示灯（Numlock 等） |
-| \\L       | 按键层                   |
-| \\U       | 用户自定义选项           |
+| Symbol    | Usage                   | Format                           | Notes                                                                                      |
+| --------- | ----------------------- | -------------------------------- | ------------------------------------------------------------------------------------------ |
+| ~         | Parameter end           | ~                                | The script name (mode name) follows the end                                                |
+| \\        | Parameter type specifier| \\a\\b\\c\\d~                    | Only interprets one letter (if script name doesn't start with "\\", "{" or "~", parameters are parsed as "\\u\\u\\u\\u~" by default) |
+|           | Parameter name          | \\m Modifier key\\g General key~ | The parameter name follows the letter                                                      |
+| -         | Custom option (single)  | \\U Switch-0 On-1 Off~           | -value+option name                                                                         |
+| =         | Custom option (multiple)| \\U Mouse key=1 Left=2 Right=4 Middle~ |                                                                                      |
+| {}        | Collection              | {\\m\\g}Short press{\\m\\g}Long press~ |                                                                                      |
+| --------- | ------                  | ----------                       | ---                                                                                        |
+| \\u       | Unsigned number 0~255   |                                  |                                                                                            |
+| \\s       | Signed number -128~127  |                                  |                                                                                            |
+| \\\\u     | Unsigned number 0~65535 |                                  |                                                                                            |
+| \\\\s     | Signed number -32768~32767 |                               |                                                                                            |
+| \\\\\\u   | Same as above           |                                  |                                                                                            |
+| \\\\\\s   | Same as above           |                                  |                                                                                            |
+| \\m       | Modifier keys           |                                  |                                                                                            |
+| \\g       | General keys            |                                  |                                                                                            |
+| \\M       | Mouse keys              |                                  |                                                                                            |
+| \\c       | Multimedia keys         |                                  |                                                                                            |
+| \\j       | Joystick buttons        |                                  |                                                                                            |
+| \\a       | Joystick axes           |                                  |                                                                                            |
+| \\P       | Password                |                                  |                                                                                            |
+| \\S       | String                  |                                  |                                                                                            |
+| \\A       | Keyboard indicators (Numlock etc.) |                       |                                                                                            |
+| \\L       | Key layer               |                                  |                                                                                            |
+| \\U       | User-defined options    |                                  |                                                                                            |
 
-## **-1.指令表**
+## **Command Reference Table**
 
-!> 默认是小端序，除非有特别标注
+!> Default is little-endian unless specifically noted
 
-| code | 助记符            | 长度 | 格式                         | 方法                                                                                      |
-| ---- | ----------------- | ---- | ---------------------------- | ----------------------------------------------------------------------------------------- |
-| 0x00 |                   |      |                              |                                                                                           |
-| 0x01 | NOP               | 1    | NOP                          | NOP                                                                                       |
-| 0x02 | JMP               | 3    | JMP addr16(BIG EDIT)         | PC=addr                                                                                   |
-| 0x03 | SJMP              | 2    | SJMP rel(-128~+127)          | PC=PC+2+rel                                                                               |
-| 0x04 |                   |      |                              |                                                                                           |
-| 0x05 | SLEEP_X256        | 2    | SLEEP_X256 data8             | sleep data\*256 ms                                                                        |
-| 0x06 | SLEEP             | 2    | SLEEP data8                  | sleep data\*1 ms                                                                          |
-| 0x07 | SLEEP_RAND_X256   | 2    | SLEEP_RAND_X256 data8        | sleep random() % (data\*256) ms                                                           |
-| 0x08 | SLEEP_RAND        | 2    | SLEEP_RAND data8             | sleep random() % (data\*1) ms                                                             |
-| 0x09 | SLEEP_X256_VAL    | 2    | SLEEP_X256_VAL REG           | sleep REG\*256 ms                                                                         |
-| 0x0A | SLEEP_VAL         | 2    | SLEEP_VAL REG                | sleep REG\*1 ms                                                                           |
-| 0x0B | SLEEP_RAND_X8_VAL | 2    | SLEEP_X8_VAL REG             | sleep random() % (REG\*8) ms                                                              |
-| 0x0C | SLEEP_RAND_VAL    | 2    | SLEEP_VAL REG                | sleep random() % (REG\*1) ms                                                              |
-| 0X0D | SLEEP_U16         | 2    | SLEEP_U16 data16             | sleep data\*1ms                                                                           |
-| 0x0E | SLEEP_RAND_U16    | 2    | SLEEP_RAND_U16 data16        | sleep random() % (data\*1) ms                                                             |
-| 0x0F |
-| 0X10 | S_SK              | 2    | S_SK keyboard_modifier_keys  | send press key(s) [data value](https://manual.sayodevice.com/format/modifier_keys.json)   |
-| 0X11 | S_GK              | 2    | S_GK keyboard_general_keys   | send press a key [data value](https://manual.sayodevice.com/format/general_keys.json)     |
-| 0X12 | S_MK              | 2    | S_MK mouse_keys              | send press key(s) [data value](https://manual.sayodevice.com/format/mouse_keys.json)      |
-| 0X13 | S_MU              | 2    | S_MU multimedia_keys         | send press key(s) [data value](https://manual.sayodevice.com/format/mu_keys.json)         |
-| 0X14 | S_SK_VAL          | 2    | S_SK_VAL REG                 | send press key(s) [data value](https://manual.sayodevice.com/format/modifier_keys.json)   |
-| 0X15 | S_GK_VAL          | 2    | S_GK_VAL REG                 | send press a key [data value](https://manual.sayodevice.com/format/general_keys.json)     |
-| 0X16 | S_MK_VAL          | 2    | S_MK_VAL REG                 | send press key(s) [data value](https://manual.sayodevice.com/format/mouse_keys.json)      |
-| 0X17 | S_MU_VAL          | 2    | S_MU_VAL REG                 | send press key(s) [data value](https://manual.sayodevice.com/format/mu_keys.json)         |
-| 0X18 | S_USK             | 2    | S_USK keyboard_modifier_keys | send release key(s) [data value](https://manual.sayodevice.com/format/modifier_keys.json) |
-| 0X19 | S_UGK             | 2    | S_UGK keyboard_general_keys  | send release a key [data value](https://manual.sayodevice.com/format/general_keys.json)   |
-| 0X1A | S_UMK             | 2    | S_UMK mouse_keys             | send release key(s) [data value](https://manual.sayodevice.com/format/mouse_keys.json)    |
-| 0X1B | S_UMU             | 2    | S_UMU multimedia_keys        | send release key(s) [data value](https://manual.sayodevice.com/format/mu_keys.json)       |
-| 0X1C | S_USK_VAL         | 2    | S_USK_VAL REG                | send release key(s) [data value](https://manual.sayodevice.com/format/modifier_keys.json) |
-| 0X1D | S_UGK_VAL         | 2    | S_UGK_VAL REG                | send release a key [data value](https://manual.sayodevice.com/format/general_keys.json)   |
-| 0X1E | S_UMK_VAL         | 2    | S_UMK_VAL REG                | send release key(s) [data value](https://manual.sayodevice.com/format/mouse_keys.json)    |
-| 0X1F | S_UMU_VAL         | 2    | S_UMU_VAL REG                | send release key(s) [data value](https://manual.sayodevice.com/format/mu_keys.json)       |
-| 0x20 |
-| 0x21 | S_MO_DATA         | 3    | S_MO_DATA index data8        | send mouse data <br> (index 0=X 1=Y 2=Scroll)                                             |
-| 0x22 | S_MO_VAL          | 3    | S_MO_VAL index REG           | send mouse data <br> (index 0=X 1=Y 2=Scroll)                                             |
-| 0x23 | S_JOY_AXIS        | 4    | S_JOY_AXIS index data16      | send controler data <br> (index 0=X 1=Y 2=rX 3=rY 4=Z 5=rZ)                               |
-| 0x24 | S_JOY_AXIS_VAL    | 3    | S_JOY_AXIS_VAL index REG     | send controler data <br> (index 0=X 1=Y 2=rX 3=rY 4=Z 5=rZ)                               |
-| 0X25 | S_CURSOR          | 5    | S_CURSOR data16 data16       | send move mouse cursor to X Y                                                             |
-| 0X26 | S_CURSOR_VAL      | 5    | S_CURSOR_VAL REG REG         | send move mouse cursor to X Y                                                             |
-| 0X27 | S_DIAL            | 2    | S_DIAL data8                 | send DIAL data <br>(0=release 1=press 2=clockwise rotation 3=Anticlockwise rotation)      |
-| 0X28 | S_DIAL_VAL        | 2    | S_DIAL REG                   | send DIAL data <br>(0=release 1=press 2=clockwise rotation 3=Anticlockwise rotation)      |
-| 0X29 |
-| 0X2A |
-| 0X2B |
-| 0X2C | S_JK              | 2    | S_JK data8                   | key num(0~127)                                                                            |
-| 0X2D | S_JK_VAL          | 2    | S_JK_VAL REG                 | key num(0~127)                                                                            |
-| 0X2E | S_UJK             | 2    | S_UJK data8                  | key num(0~127)                                                                            |
-| 0X2F | S_UJK_VAL         | 2    | S_UJK_VAL REG                | key num(0~127)                                                                            |
-
-待编辑
+| Code | Mnemonic         | Length | Format                      | Method                                                                                     |
+| ---- | ---------------- | ------ | --------------------------- | ------------------------------------------------------------------------------------------ |
+| 0x00 |                  |        |                             |                                                                                            |
+| 0x01 | NOP              | 1      | NOP                         | No operation                                                                               |
+| 0x02 | JMP              | 3      | JMP addr16(BIG ENDIAN)      | PC=addr                                                                                    |
+| 0x03 | SJMP             | 2      | SJMP rel(-128~+127)         | PC=PC+2+rel                                                                                |
+| 0x04 |                  |        |                             |                                                                                            |
+| 0x05 | SLEEP_X256       | 2      | SLEEP_X256 data8            | Sleep data*256 ms                                                                          |
+| 0x06 | SLEEP            | 2      | SLEEP data8                 | Sleep data*1 ms                                                                           |
+| 0x07 | SLEEP_RAND_X256  | 2      | SLEEP_RAND_X256 data8       | Sleep random() % (data*256) ms                                                            |
+| 0x08 | SLEEP_RAND       | 2      | SLEEP_RAND data8            | Sleep random() % (data*1) ms                                                              |
+| 0x09 | SLEEP_X256_VAL   | 2      | SLEEP_X256_VAL REG          | Sleep REG*256 ms                                                                          |
+| 0x0A | SLEEP_VAL        | 2      | SLEEP_VAL REG               | Sleep REG*1 ms                                                                            |
+| 0x0B | SLEEP_RAND_X8_VAL| 2      | SLEEP_X8_VAL REG            | Sleep random() % (REG*8) ms                                                               |
+| 0x0C | SLEEP_RAND_VAL   | 2      | SLEEP_VAL REG               | Sleep random() % (REG*1) ms                                                               |
+| 0X0D | SLEEP_U16        | 2      | SLEEP_U16 data16            | Sleep data*1ms                                                                            |
+| 0x0E | SLEEP_RAND_U16   | 2      | SLEEP_RAND_U16 data16       | Sleep random() % (data*1) ms                                                              |
+| 0x0F |                  |        |                             |                                                                                            |
+| 0X10 | S_SK             | 2      | S_SK keyboard_modifier_keys | Send press key(s) [data value](https://manual.sayodevice.com/format/modifier_keys.json)    |
+| 0X11 | S_GK             | 2      | S_GK keyboard_general_keys  | Send press a key [data value](https://manual.sayodevice.com/format/general_keys.json)      |
+| 0X12 | S_MK             | 2      | S_MK mouse_keys             | Send press key(s) [data value](https://manual.sayodevice.com/format/mouse_keys.json)       |
+| 0X13 | S_MU             | 2      | S_MU multimedia_keys        | Send press key(s) [data value](https://manual.sayodevice.com/format/mu_keys.json)          |
+| 0X14 | S_SK_VAL         | 2      | S_SK_VAL REG                | Send press key(s) [data value](https://manual.sayodevice.com/format/modifier_keys.json)    |
+| 0X15 | S_GK_VAL         | 2      | S_GK_VAL REG                | Send press a key [data value](https://manual.sayodevice.com/format/general_keys.json)      |
+| 0X16 | S_MK_VAL         | 2      | S_MK_VAL REG                | Send press key(s) [data value](https://manual.sayodevice.com/format/mouse_keys.json)       |
+| 0X17 | S_MU_VAL         | 2      | S_MU_VAL REG                | Send press key(s) [data value](https://manual.sayodevice.com/format/mu_keys.json)          |
+| 0X18 | S_USK            | 2      | S_USK keyboard_modifier_keys| Send release key(s) [data value](https://manual.sayodevice.com/format/modifier_keys.json)  |
+| 0X19 | S_UGK            | 2      | S_UGK keyboard_general_keys | Send release a key [data value](https://manual.sayodevice.com/format/general_keys.json)    |
+| 0X1A | S_UMK            | 2      | S_UMK mouse_keys            | Send release key(s) [data value](https://manual.sayodevice.com/format/mouse_keys.json)     |
+| 0X1B | S_UMU            | 2      | S_UMU multimedia_keys       | Send release key(s) [data value](https://manual.sayodevice.com/format/mu_keys.json)        |
+| 0X1C | S_USK_VAL        | 2      | S_USK_VAL REG               | Send release key(s) [data value](https://manual.sayodevice.com/format/modifier_keys.json)  |
+| 0X1D | S_UGK_VAL        | 2      | S_UGK_VAL REG               | Send release a key [data value](https://manual.sayodevice.com/format/general_keys.json)    |
+| 0X1E | S_UMK_VAL        | 2      | S_UMK_VAL REG               | Send release key(s) [data value](https://manual.sayodevice.com/format/mouse_keys.json)     |
+| 0X1F | S_UMU_VAL        | 2      | S_UMU_VAL REG               | Send release key(s) [data value](https://manual.sayodevice.com/format/mu_keys.json)        |
+| 0x20 |                  |        |                             |                                                                                            |
+| 0x21 | S_MO_DATA        | 3      | S_MO_DATA index data8       | Send mouse data (index 0=X 1=Y 2=Scroll)                                                   |
+| 0x22 | S_MO_VAL         | 3      | S_MO_VAL index REG          | Send mouse data (index 0=X 1=Y 2=Scroll)                                                   |
+| 0x23 | S_JOY_AXIS       | 4      | S_JOY_AXIS index data16     | Send controller data (index 0=X 1=Y 2=rX 3=rY 4=Z 5=rZ)                                    |
+| 0x24 | S_JOY_AXIS_VAL   | 3      | S_JOY_AXIS_VAL index REG    | Send controller data (index 0=X 1=Y 2=rX 3=rY 4=Z 5=rZ)                                    |
+| 0X25 | S_CURSOR         | 5      | S_CURSOR data16 data16      | Send move mouse cursor to X Y                                                              |
+| 0X26 | S_CURSOR_VAL     | 5      | S_CURSOR_VAL REG REG        | Send move mouse cursor to X Y                                                              |
+| 0X27 | S_DIAL           | 2      | S_DIAL data8                | Send DIAL data (0=release 1=press 2=clockwise rotation 3=Anticlockwise rotation)           |
+| 0X28 | S_DIAL_VAL       | 2      | S_DIAL REG                  | Send DIAL data (0=release 1=press 2=clockwise rotation 3=Anticlockwise rotation)           |
+| 0X29 |                  |        |                             |                                                                                            |
+| 0X2A |                  |        |                             |                                                                                            |
+| 0X2B |                  |        |                             |                                                                                            |
+| 0X2C | S_JK             | 2      | S_JK data8                  | Joystick key number (0~127)                                                                |
+| 0X2D | S_JK_VAL         | 2      | S_JK_VAL REG                | Joystick key number (0~127)                                                                |
+| 0X2E | S_UJK            | 2      | S_UJK data8                 | Joystick key number (0~127)                                                                |
+| 0X2F | S_UJK_VAL        | 2      | S_UJK_VAL REG               | Joystick key number (0~127)                                                                |

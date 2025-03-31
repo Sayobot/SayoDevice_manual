@@ -1,88 +1,126 @@
-# Screen settings
+# Screen Configuration
 
-> ## Modify screen image  
+This section explains how to customize the display on SayoDevice models equipped with screens.
 
-1. Click the **Images** tab and click the Add "+" button in the upper left corner.
+## Setting Up Custom Screen Images
 
-![](/img_screen/main.jpg)  
+### Adding New Images
 
-<br/>
-2...1. Click on the upper left corner of the pop-up page to open an image;
-<br/>
-2...2. Modify the output resolution on the right side of the toolbar; 
-<br/>
-          **(O3C, the maximum screen resolution is 160x80, exceeding it will cause abnormal display)**
-<br/>
-2...3. Scale the picture, directly enter the resolution or click "+" "-"; drag the frame to select the required part;
-<br/>
-2...4. Click "√" to confirm.
-<br/>
+1. Navigate to the **Images** tab in the application
+2. Click the **Add** (+) button in the upper left corner
 
-![](/img_screen/1.jpg)
-![](/img_screen/2.jpg)
+![Main Screen Interface](/img_screen/main.jpg)
 
-3. Click submit. Wait for the keyboard download to complete (the screen displays a progress bar)  
+### Preparing Your Images
 
-![](/img_screen/3.jpg)  
+1. In the popup window, click the icon in the upper left corner to open an image file
+2. Adjust the output resolution in the right toolbar:
+   - **Important**: For O3C devices, maximum screen resolution is 160x80 pixels
+   - Exceeding this resolution will cause display abnormalities
 
-4. Click the **Screen** tab; 
-in the upper left corner, you can select "Main Screen", "Boot Screen", and "Idle Screen"; 
-on the left is the screen layer, which is drawn downwards in order;
+3. Scale and crop your image:
+   - Enter specific resolution values directly, or
+   - Use the + and - buttons to adjust size incrementally
+   - Drag the selection frame to capture the desired portion of the image
 
-![](/img_screen/4.jpg)  
+4. Click the checkmark (✓) to confirm your selection
 
-5. Select a layer (be careful not to click on the first layer, clearing the screen is necessary most of the time), and modify the layer on the right (specific parameters are explained at the end of the document)
+![Image Selection](/img_screen/1.jpg)
+![Image Scaling](/img_screen/2.jpg)
 
-![](/img_screen/5.jpg)  
+### Uploading to Your Device
 
+1. Click **Submit** to send the image to your device
+2. Wait for the download to complete
+   - The device screen will display a progress bar during this process
 
-> ## Error reset
-If the device does not work properly after modifying the picture
+![Upload Progress](/img_screen/3.jpg)
 
-method 1:
-Press and hold the knob and reconnect the data cable; reopen the software and modify the picture（Do not exit the menu page）
+## Configuring Screen Layers
 
-method 2:
-Press and hold the knob and reconnect the data cable; 
-Menu->Device->Factory recovery
+1. Navigate to the **Screen** tab
+2. In the upper left corner, select the screen type you want to configure:
+   - **Main Screen**: Normal operation display
+   - **Boot Screen**: Displayed during device startup
+   - **Idle Screen**: Displayed when device is inactive
 
-> ## Layer parameters  
+3. Work with layers in the left panel:
+   - Layers are drawn in order from top to bottom
+   - Top layers may obscure elements on lower layers
+   - Select a layer to edit its properties
 
-### empty  
-     empty layer  
-### pure color  
-     Set a rectangular solid color area
-### Widget  
-     Built-in widgets.  
-     1=empty  
-     2=Key strength bar, vertical  
-     3=Key strength bar, horizontal  
-     4=CPU Load  
-     5=bangocat  
-    
-### Key Count  
-     Key counter  
-### ASCII String  
-     set a text  
+![Screen Configuration Interface](/img_screen/4.jpg)
 
-### Built-in image  
-     Built-in pictures  
+4. When creating a new configuration, select a layer (avoid the first layer if it's set to "Clean Screen" as this is typically needed)
+5. Modify the layer parameters in the right panel according to your needs
 
-### image  
-     custom picture  
-### Clean Screen  
-     Clear the screen. Put it on the first layer  
+![Layer Configuration](/img_screen/5.jpg)
 
-### Offset X/Y  
-     Layer offset, relative to the top left corner.   
-     The offset component cannot exceed the screen
+## Troubleshooting Screen Issues
 
-### key number  
-     Corresponding key event  
+If your device doesn't function properly after modifying screen settings, you have two recovery options:
 
-### show  
-     Selective display according to the status of the corresponding button  
+### Method 1: Soft Reset
+1. Press and hold the knob while reconnecting the USB data cable
+2. Without exiting the menu page, reopen the software
+3. Modify the screen settings again with correct parameters
 
-### Max digits  
-     Maximum number of digits to display
----
+### Method 2: Factory Reset
+1. Press and hold the knob while reconnecting the USB data cable
+2. Navigate to Menu → Device → Factory Recovery
+3. This will restore all default settings, including screen configurations
+
+## Layer Types and Parameters
+
+### Empty Layer
+Creates a blank placeholder layer with no visible elements
+
+### Pure Color
+Displays a solid rectangular color area
+- Parameters: Color, Size, Position
+
+### Widget
+Displays built-in functional elements:
+- 1: Empty (no widget)
+- 2: Key Strength Bar (Vertical)
+- 3: Key Strength Bar (Horizontal)
+- 4: CPU Load Monitor
+- 5: Bongo Cat Animation
+
+### Key Count
+Displays a counter for key presses
+- Parameters: Position, Style, Counter Limit
+
+### ASCII String
+Displays custom text on the screen
+- Parameters: Text content, Font, Position, Color
+
+### Built-in Image
+Uses pre-installed system images
+- Parameters: Image selection, Position
+
+### Custom Image
+Displays your uploaded custom images
+- Parameters: Image selection, Position, Scaling
+
+### Clean Screen
+Clears all screen content
+- **Important**: Typically placed as the first (bottom) layer
+
+## Parameter Descriptions
+
+### Offset X/Y
+Sets the position of elements relative to the top-left corner
+- Values must keep the element within screen boundaries
+
+### Key Number
+Associates the layer with a specific key on your device
+- Used for dynamic elements that respond to key actions
+
+### Show Condition
+Controls when the layer is visible based on key states
+- Options: Always, When Pressed, When Released
+
+### Max Digits
+For numeric displays, sets the maximum number of digits to show
+- Useful for counters and numeric indicators
