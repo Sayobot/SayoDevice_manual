@@ -1,9 +1,12 @@
-# Software version selection
+# Software Version Selection
 
-The following versions can be used, just choose one according to your needs
+Please choose one of the following versions according to your needs:
 
-## [Web version (recommended)](../std/web_hid/README.md)
+## [Web Version (Recommended)](../std/web_hid/README.md)
+Use our web-based configuration tool directly in your browser without installation.
 
-## [Offline version V3](../std/client/README.md)
+## [Offline Version V3](../std/client/README.md)
+Download and install our latest offline configuration software.
 
-## [Offline version V2 (not recommended, no longer updated)](../std/web/README.md)
+## [Offline Version V2 (Legacy)](../std/web/README.md)
+This version is no longer updated and not recommended for new users.

@@ -1,11 +1,15 @@
-# Select your device type
+# Select Your Device Type
 
-Only by selecting the correct one can you see the content you want
+Please select the correct device type to view the relevant documentation.
 
-## [Keyboard function](std/README.md)
+## [Keyboard Functions](std/README.md)
+Configure and customize your keyboard settings and functions.
 
-## [Wireless options](ble/README.md)
+## [Wireless Options](ble/README.md)
+Set up and manage wireless connectivity for your device.
 
-## [Volume controller (knob)](knob/README.md)
+## [Volume Controller (Knob)](knob/README.md)
+Configure your volume control knob and related settings.
 
-## [screen built-in menu](std/built_in_menu/README.md)
+## [Screen Built-in Menu](std/built_in_menu/README.md)
+Access and customize the built-in menu system on your device's screen.
