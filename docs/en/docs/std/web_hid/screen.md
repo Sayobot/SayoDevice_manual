@@ -1,102 +1,67 @@
-# Screen settings
 
-!> Only some devices with screens
+# Screen Configuration
 
-## Start
+## Interface Overview:
 
-![](/img_screen/screen_main.jpg)
+![](/img_screen/screen_main.jpg) 
 
----
+---  
+## Layers
+Right panel selects layers (0-15). Higher numbers overlay lower ones. Drag '==' to reorder.
 
-## Interface switching
+## Layer Types
+> ### Clear  
+Reset screen content (usually layer #0)
 
-There are three interfaces:  
-Power-on interface: Displayed once when the device is powered on.  
-Main interface: The interface displayed in normal state.  
-Sleep interface: The interface displayed after **screen timeout** without any operation 
+> ### None  
+Inactive
 
-## Layers  
+> ### Pure Color  
+Colored rectangle
 
-Select a layer on the right side of the interface  
-The layers are drawn in order from **#01 to #16. **  
-The layers with larger numbers will **overwrite** the layers with smaller numbers.  
-**Click ⠿ on the right side of the layer to drag the layer order**  
+> ### Widgets  
+Available components:  
+1=Vertical force bar  
+2=Horizontal force bar  
+3=CPU Load  
+4=Bango cat  
+5=Key indicator  
+6=System frequency  
 
-## Layer type  
+> ### Press Counter
+Press counter (max 10 digits)
 
-> ### Clear screen  
->
-> Clear the image content of the previous frame. Usually set to #01, do not modify.  
-> Exception: #01 is a complete image  
+> ### ASCII Texts  
+English characters/symbols
 
-> ### Blank
->
-> Do not use this layer
+> ### IntegratedImages  
+Built-in images
 
-> ### Solid color
->
-> Draw a solid color rectangle of specified width  
+> ### Custom Image  
+Upload via Images tab
 
-> ### Built-in components
->
-> Built-in widgets.  
-> Some components need to set color to display  
-> 0=empty  
-> 1=key velocity bar, vertical  
-> 2=key velocity bar, horizontal  
-> 3=CPU Load  
-> 4=bangocat  
-> 5=key indication  
-> 6=system frequency information  
+## Layer Parameters
 
-> ### Built-in counter
->
-> Key counter  
-> You can set the maximum number of digits. Maximum 10 digits.
+> ### Visible Layers  
+Layer visibility per keymap
 
-> ### ASCII string
->
-> Display a text  
-> Support English letters and symbols
+> ### Event Keys  
+Requires trigger event
 
-> ### Built-in icon
->
-> Built-in image of keyboard
+> ### Event Type  
+Always/On Press/On Release etc.
 
-> ### Material (custom image)
->
-> Uploaded custom image (upload in the material tab on the left side of the page)
+> ### Position X/Y  
+Position relative to top-left
 
-## Layer parameters
+> ### Asset ID  
+Image/widget selection
 
-> ### Displayed button layer
->
-> Whether this layer is displayed in a certain button layer
+> ### Max Digits  
+Number display length  
 
-> ### Trigger key
->
-> Only effective with trigger events.
+> ### Texts Color  
+Font color  
 
-> ### Trigger event
->
-> Optional always display, display when button is pressed, display when button is released, etc.
-
-> ### Offset X/Y
->
-> Layer offset, relative to the upper left corner.
-
-> ### Material number
->
-> Select different images or components. Range 0~x
-
-> ### Maximum digits
->
-> Maximum digits to display
-
-> ### Text color
->
-> Text color
-
-> ### Background color
->
-> Valid after background is turned on.
+> ### Background Color  
+Background when enabled

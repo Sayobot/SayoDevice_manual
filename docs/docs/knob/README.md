@@ -1,18 +1,13 @@
-# 欢迎使用 SayoDevice E1
+# 欢迎使用SayoDevice E1
 
-### ☜ 左边有帮助目录 <!-- {docsify-ignore} -->
+> ## 界面指引  
 
-> ## 软件地址 <!-- {docsify-ignore} -->
+1. 顺时针旋转  
+2. 逆时针旋转  
+3. 按住并顺时针旋转  
+4. 按住并逆时针旋转  
+5. 点按功能（按下且没有旋转，松开时触发）  
+6. 按下功能（按下就触发。一般不使用，留空）  
+  
+![](img/main.png)  
 
-### 无需下载，使用浏览器打开 [https://app.sayodevice.com](https://app.sayodevice.com) 即可设置功能 <!-- {docsify-ignore} -->
-
-推荐使用 [Chrome 浏览器](https://www.google.cn/chrome/index.html) 或 **Edge 浏览器**  
-[QQ 浏览器](https://browser.qq.com/)、[搜狗高速浏览器](https://ie.sogou.com/)、[360 极速浏览器](http://chrome.360.cn/) 亦可，但需要更新到最新版
-
-### 或者. [下载离线版](https://dl.sayobot.cn/setting_v2.zip) <!-- {docsify-ignore} -->
-
----
-
-> ## 界面指引 <!-- {docsify-ignore} -->
-
-![](img/main.jpg)

@@ -1,42 +1,46 @@
-# Display settings
+# Display Settings  
 
-![Where's the image? Try refreshing it? ](img/menu_display.png)
+> # Language  
 
-> ## Back light
+![Image missing? Try refreshing the page.](/img/menu_language.png)  
 
-![Where's the image? Try refreshing it? ](img/menu_backlight.png)
+The device supports three languages: Simplified Chinese, English, and Japanese.  
 
-### Standby light
+---  
 
-If your computer **does not lose power to the USB after shutting down**, **turning on** this option will turn off the screen backlight of the small screen **after shutting down your computer**  
+> # Backlight  
 
-### Screensaver timeout
+![Image missing? Try refreshing the page.](/img/menu_backlight.png)  
 
-Set how long to display the sleep screen when idle
+### Standby Screen Off  
+If your **computer's USB remains powered after shutdown**, enabling this option will **turn off the display** when the computer is off.  
+However, the backlight will stay on. Do not worry—the backlight has a long lifespan.  
 
----
+### Screensaver Timeout  
+Sets the idle time before the screensaver activates.  
 
-> ## Main screen
+<small>~~Wouldn't it be better to configure this in the website?~~</small>  
 
-![Where's the image? Try refreshing it? ](img/menu_template.png)
+---  
 
-!> **!!!Warning: Selecting a template will overwrite your custom home screen settings!!!**
+> # Main Screen  
 
-### Template->Default
+!> Selecting a template will overwrite your custom home screen settings.  
 
-Set the main screen to the default style preset by SayoDevice in your keyboard
+![Image missing? Try refreshing the page.](/img/menu_display.png)  
+![Image missing? Try refreshing the page.](/img/menu_template.png)  
 
-### Template->bongocat
+- **Template: default**  
+Sets the home screen to the default style preloaded on your keyboard.  
 
-Set the main screen to the bongocat style preset by SayoDevice in your keyboard
+- **Template: bongocat**  
+Sets the home screen to the bongocat style preloaded on your keyboard.  
+~~This explanation feels redundant...~~  
 
+> # Keypress Counter  
 
-### Key count
+Choose the timeframe for the keypress counter displayed on the home screen:  
 
-Select the key counter component on the main screen to display the keystrokes from the time to now
+**All** Counts from factory reset or the last **key counter reset**.  
 
-- **All**  
-  Start from the factory or the last **Reset key count**
-
-- **This time**  
-  Count from this boot
+**Single** Counts from the current power-on session.  

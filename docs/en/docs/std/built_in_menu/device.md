@@ -1,50 +1,39 @@
-# Device Settings
 
-![Where's the picture? Try refreshing? ](img/menu_device.png)
+# Device Settings  
 
-> ## USB Report Rate
->
-> Modify the device's report rate
+![Image missing? Try refreshing the page.](/img/menu_device.png)  
 
-![Where's the picture? Try refreshing? ](img/menu_pollingrate.png)
+> ## USB report Rate  
+Modify the USB polling rate  
 
----
+![Image missing? Try refreshing the page.](/img/menu_pollingrate.png)  
 
-> ## Device info
->
-> Nothing to do here
+---  
 
-![Where's the picture? Try refreshing? ](img/menu_about.png)
+> ## Device Info   
+No operational settings here  
 
-- **HW**  
-Hardware version (may be inaccurate)
-- **FW**  
-Firmware version (major version)
+![Image missing? Try refreshing the page.](/img/menu_about.png)  
 
----
+**HW** Hardware version (may be inaccurate)  
+**FW** Firmware version  
 
-> ## Key Count
->
-> Displays how many times you have pressed each key since the factory or last reset of the key count
+---  
 
-![Where's the picture? Try refreshing? ](img/menu_counter.png)
-![Where's the picture? Try refreshing? ](img/menu_counter_reset.png)
+> ## Key Count  
+Displays the number of presses for each key since factory reset or the last counter reset  
 
-- **Reset key count**  
-Reset key count  
+![Image missing? Try refreshing the page.](/img/menu_counter_reset.png)  
 
----
+**Reset key count** Reset the keypress counter  
 
-> ## Factory recovery
->
-> Some reset operations
+---  
 
-![Where's the picture? Try refreshing it? ](img/menu_reset_1.png)
+> ## Factory Recovery  
+**Does not reset the keypress counter**  
 
-- **Factory recovery**  
-(**will not reset key count**)
+![Image missing? Try refreshing the page.](/img/menu_reset_1.png)  
 
-- **jump to bootloader**  
-Enter firmware update mode
-- **Reset image data**  
-Clear custom images
+**Factory Reset** Confirms factory reset  
+**Jump to bootloader** Enters firmware update mode  
+**Reset image data** Clears custom images  

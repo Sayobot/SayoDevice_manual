@@ -1,77 +1,41 @@
-# Button settings
+# Button Settings  
 
-![Where's the picture? Try refreshing? ](img/menu_key.png)
+![Image missing? Try refreshing the page.](/img/menu_key.png)  
 
-> ## Calibration
+> # Calibration  
+**Follow the prompts: press fully, then release. Do not apply excessive force.**  
 
-!> If the button is not reset to zero after release, or the button is replaced, please calibrate the button.
+![Image missing? Try refreshing the page.](/img/menu_cali.png)  
 
-![Where's the picture? Try refreshing? ](img/menu_cali.png)
+**Press the knob directly** Calibrates all keys.  
+**Rotate the knob to select a single key, then press** Calibrates individual keys.  
 
-- **Press the knob directly**  
-Calibrate all buttons
-- **Turn the knob to select a single button and then press the knob**  
-Calibrate a single button
+---  
 
----
+> # Key stroke  
+```  
+RT stands for Rapid Trigger, which detects key presses/releases based on specific travel distances.  
+Recommended to use default values for RT functionality.  
+```  
 
-> ## Key stroke (RT)
->
-> RT is Rapid Trigger  
-> Trigger or release the button by detecting a specific distance of pressing or lifting  
-> It is recommended to use the default value for the RT function
+![Image missing? Try refreshing the page.](/img/menu_keyconfig.png)  
 
-![Where's the picture? Try refreshing? ](img/menu_keyconfig.png)
+**Rotate the knob to select a key, then press** to configure parameters for each key.  
 
-**Turn the knob to select a button and then press the knob** to set the parameters of each button
+![Image missing? Try refreshing the page.](/img/menu_keyconfig_1.png)  
+![Image missing? Try refreshing the page.](/img/menu_keyconfig_2.png)  
 
-![alt text](img/menu_keyconfig_1.png)
-![alt text](img/menu_keyconfig_2.png)
+**Trigger** Triggers like a mechanical switch at the set height (**default: 1.1mm**).  
+**Release** Releases like a mechanical switch at the set height (**default: 0.8mm**).  
 
-- **Trigger**  
-When the button is **equal to or greater than** the set position, the press operation is triggered.   
-**Default value 0.3mm**  
-Exception: If it is set to the RT range, it will not take effect  
+**RT Top** The upper deadzone for RT. Set this to the bottom of the key travel to disable RT (**default: 1.5mm**).  
+**RT End** The lower deadzone for RT. Set this to the top of the key travel to disable RT (**default: 3.85mm**).  
+**RT Trigger** Distance to trigger within the RT zone (**default: 0.2mm**).  
+**RT Release** Distance to release within the RT zone (**default: 0.4mm**).  
 
-!>This parameter is **absolute position**  
-It is recommended to be at least 0.1mm larger than the **release** parameter  
+<small>RT can also be disabled by setting RT Actuation/Release values larger than the RT zone bounds.</small>  
+<small>Setting RT Upper and Lower Bounds to the same height also disables RT.</small>  
 
-- **Release**  
-When the button is **equal to or less than** the set position, the release operation is triggered.   
-**Default value 0.2mm**  
+> # RT Test  
 
-!>This parameter is **absolute position** and has the **highest** priority.   
-It is recommended to be greater than 0.1mm, otherwise it may not be released (due to shaft tolerance or shaking, etc.)
-
-- **RT range**  
-Within this range, RT is actived   
-**Default value 0.5mm ~ 3.8mm**
-
-!> **It is not recommended** to set the RT range to a position greater than 3.8mm  
-(because the shaft shaking may not be pressed to the bottom, which may cause incorrect release)
-
-- **RT trigger**  
-Within the RT range, the cumulative press of the button is equal to or greater than the set distance to trigger the press operation   
-**Default value 0.2mm**
-
-!>This parameter is the **relative length**, relative to the position of the last trigger release  
-It is recommended to be greater than 0.1mm
-
-- **RT release**  
-Within the RT range, the cumulative release of the button is equal to or greater than the set distance to trigger the release operation **Default value 0.4mm**
-
-!>This parameter is the **relative length**, relative to the position of the last trigger press  
-It is recommended to be greater than 0.2mm
-
-> ## Disable RT
->
-> You can set RT Set Trigger / RT Release to a value greater than RT Range to disable RT
-
-> ## Visual Adjustment
-When adjusting the parameter value, press the corresponding key, and the indicator bar at the top of the screen will show the real-time key status
-
-![alt text](img/menu_keyconfig_3.png)
-
-> ## Special Cases
->
-> To be edited
+On this page, press keys to check their trigger status. The color of the force bar indicates the current state.  

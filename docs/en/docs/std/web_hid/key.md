@@ -1,262 +1,276 @@
-# Key Function
 
-> # Set Keys
+# Key Bindings
 
-1. Select **Default** for Key Mode,  
+> # Setting Keys  
 
-2. Click the box below to select keyboard keys  
+1. Select **Default** key mode  
+2. Click the box below to choose keyboard keys:  
+- **Ctrl Shift Alt Win** can be **unselected, single-selected or multi-selected**  
+- **Other keys** can be **unselected or single-selected**  
+- Click again to deselect  
 
-- **Ctrl Shift Alt Win** You can **not select, select one or more**.  
-- **Other keys** can **not be selected or selected**  
-- Click the key again to deselect
+- **Setting Letter A**  
+![](/img/A.jpg)
 
-<font size=5>![Alt ​​text](img/1A86E8BFAF2783C15BCDA62E980FAF35.png)Give a few examples</font>
+- **Setting Ctrl Key**  
+![](/img/Ctrl.jpg)  
 
-- **Set A**  
-![](img/A.jpg)  
+<details>
+<summary>Trigger Principle</summary>  
 
-- **Set Ctrl key**  
-![](img/Ctrl.jpg)  
+  *Maintain at least 20ms after triggering regular keys until release*  
+  *Without delay, some software may fail to recognize key presses properly.*  
+  *For shorter hold time, use **Keyboard** mode which has no additional delays.*  
+  *Ignore this tip if unclear.*  
 
----
+</details>
 
-> # Set shortcut keys
+> # Setting Shortcut Combinations
 
-- **Set copy shortcut key Ctrl+C**  
-![](img/Ctrl+C.jpg)
+- **Setting Copy shortcut Ctrl+C**  
+![](/img/Ctrl+C.jpg)
 
-- **Set screenshot shortcut key Win+Shift+S**  
-![](img/win+shift+s.jpg)
+- **Setting Screenshot shortcut Win+Shift+S**  
+![](/img/win+shift+s.jpg)
 
----
+<details>
+<summary>Trigger Principle</summary>  
 
-> # Set two sets of consecutive key operations
+  *In this mode, shortcuts will insert 20ms delay after modifiers before triggering regular keys.*  
+  *Maintain regular key for at least 20ms until release*  
+  *Without delays, some software may fail to recognize shortcuts properly.*  
+  *For simultaneous key triggers, use **Keyboard** mode without extra delays.*  
+  *Ignore this tip if unclear.*  
 
-!> In this mode, one set of shortcut keys is executed after pressing, and another set of shortcut keys is executed after releasing the key
+</details>
 
-1. Select the button mode **two-step operation**,  
-2. Set two groups of buttons, the method is the same as above  
- 
-- **Set one-key paste + enter**  
-![](img/2setp_paste+enter.jpg)
+> # Setting Two-Step Key
 
----
+!> This mode executes one shortcut when pressed and another when released  
 
-> # tap or hold
+1. Select **Two-step Key** mode  
+2. Set two key groups using same method above  
 
-!> This mode is not compatible for knobs
+- **Setting Paste+Enter**  
+![](/img/2setp_paste+enter.jpg)  
 
-1. Select the button mode **tap or hold**,
-2. Then set two groups of buttons, the method is the same as above
+<details>
+<summary>Trigger Principle</summary>  
 
-- **Set tap A and hold B**  
-![](img/tap_and_hold.jpg)  
+  *Process: Modifiers ->20ms-> Regular keys ->30ms-> Wait release ->Regular keys ->30ms*
 
-- **Set tap to pause and hold to next song**  
-![](img/tap_and_hold_mu.jpg)  
+</details>
 
----
+> # Tap/Hold Functionality  
 
-> # Mouse mode
->
-> In this mode, you can set a button as **mouse left button, mouse right button, scroll wheel press** or **cursor moves up and down, left and right, scroll wheel up and down**
+!> Not suitable for rotary encoders
 
-- **Set mouse left button**  
-In **mouse button** Select a button in the Options box. Set the following three values ​​to 0  
-![](img/mouse_key.jpg)
+1. Select **Tap/Hold** mode  
+2. Set two key groups using same method above  
 
-- **Set cursor down**  
-In the **Mouse Button** option box, cancel all buttons, and then fill the **Mouse Move Y** input box with -1   
-![](img/mouse_move_down.jpg)  
+- **Set tap=A hold=B**  
+![](/img/tap_and_hold.jpg)  
 
-- **Set wheel down**  
-In the **Mouse Button** option box, cancel all buttons, and then fill the **Scroll** input box with -1  
+- **Set tap=Pause hold=Next Track**  
+![](/img/tap_and_hold_mu.jpg)  
+
+<details>
+<summary>Trigger Principle</summary>  
+
+  *1. Start 300ms countdown when key is pressed*  
+  *2. Trigger hold action if timeout, else trigger tap action*
+
+</details>
+
+> # Mouse Mode  
+Set keys as **Left/Right/Middle Click** or **Cursor Movement/Wheel Scroll**  
+
+- **Setting Left Click**  
+Select button in **Mouse Buttons**. Set three values to 0  
+![](/img/mouse_key.jpg)  
+
+- **Setting Cursor Down**  
+Deselect all mouse buttons, set **Y-axis Move** to -1  
+![](/img/mouse_move_down.jpg)  
+
+- **Setting Wheel Scroll Down**  
+Deselect all buttons, set **Scroll** to -1  
 
 ```
-X positive number moves right, negative number moves left  
-Y positive number moves up, negative number moves down  
-Roller positive number rolls up, negative number rolls down  
-The larger the value, the faster the movement speed  
+Horizontal: Positive=Right, Negative=Left  
+Vertical: Positive=Up, Negative=Down  
+Wheel: Positive=Forward (Reverse on Mac)  
+Larger values mean faster movement.  
+Continuous 50ms interval movement when holding key  
 ```
 
----
+> # Media Controls  
+System volume control, track switching, screen brightness etc.  
 
-> # Multimedia Control  
->
-> Control system volume, switch songs, screen brightness, etc.  
-> _Screen brightness function is only suitable for laptops or some screens that support brightness adjustment in the system_  
-> _Step parameter is multiple execution, set to 1 to execute once, 2 to execute twice. 0 will also be executed once_  
+!> Brightness control only works for laptops or displays supporting system-level adjustment  
 
-- **Set mute switching**  
-![](img/mute.jpg)
+- **Setting Mute Toggle**  
+![](/img/mute.jpg)  
 
----
+  *Repeat Count triggers multiple presses (1-255 times)*
+---  
 
-> # Keyboard + LED control  
->
-> _The shortcut key can be unselected to achieve the effect of only switching the light state_  
-> _Including Num lock, CapsLock, Scroll Lock_  
+> # Keyboard+LED Control  
 
-!> _This mode will also trigger the indicator-related keys to update the corresponding status before and after the shortcut key is triggered_  
+!> *This mode sends LED status keys before/after shortcuts to update indicators*  
+*Shortcuts can be empty for pure LED control*  
+*Includes Num Lock/CapsLock/Scroll Lock*   
+- **Enable NumLock & Disable CapsLock**  
+![](/img/key_and_led.jpg)  
 
-- **Turn on the numlock indicator and turn off the capslock indicator**  
-![](img/key_and_led.jpg)
+<details>
+<summary>Trigger Principle</summary>  
 
----
+  *1. Enable target LEDs (auto-send keys)*  
+  *2. Send configured keys*  
+  *3. Disable target LEDs (auto-send keys)*  
 
-> # A+B+C+D  
->
-> _This mode can press the selected keys in sequence and then release them_  
-> _Applicable to shortcut keys that require strict control of the key sequence, or shorter key sets. _  
-> _Select up to 4 keys_  
+</details>
 
----
+> # A+B+C+D Mode
+*Press selected keys sequentially then release together*  
+*For strict key sequence requirements or short key sets.*  
+*Max 4 keys*  
 
-> # One-click password
->
-> _In this mode, you can enter the preset ASCII string in sequence_  
-> _You can choose to add an arbitrary key after the string, such as Enter_  
-> _You can customize the input interval (milliseconds) and lock case options_  
-> _If the input content is different from the setting, you can try to enable the lock case function. After turning it on, the input content will not be affected by the input method. _  
-> _For French keyboards, please change the key layout in Settings_  
 
-- **Set one-click input ABCdef123 and then Enter**  
+> # One-key Password
+*Type preset ASCII string automatically*  
 
-1. Enter the content in **Password Book**  
-![](img/pwd_data.png)  
+- **Set auto-type "123456"+Enter**  
+1. Enter content in **Assets->Passwords**  
+![](/img/pwd_data.png)  
+2. Change mode to **One-key Password** and select password ID  
+![](/img/pwd.jpg)  
+3. Append Key  
+Add an extra key like Enter after password:  
+![](/img/pwd_key.jpg)  
+4. Input Interval  
+Typing speed (default OK). Increase if missing characters occur.  
+Recommended ≥10 for Bluetooth  
+![](/img/pwd_time.jpg)  
+5. CapsLock Lock  
+Auto-lock caps during input to avoid IME interference:  
+![](/img/pwd_case.jpg)  
 
-2. In **Keys**, change the key mode to **One-click password** and select the saved password number  
-![](img/pwd.jpg)  
+- Other Layouts  
+Default ANSI layout. Enable AZERTY in Device Options if needed
 
-- Additional keys
-You can insert an arbitrary key after the password, such as Enter.  
+<details>
+<summary>Trigger Principle</summary>  
 
-- Input interval  
-Password input speed, in milliseconds, default value 2.  
-Generally no need to modify. If you find that you miss keys when inputting, you need to increase this value  
+  *1. Adjust CapsLock state (auto-send keys)*  
+  *2. Send characters sequentially*  
+  *3. Restore CapsLock state (auto-send keys)*  
 
-- Lock uppercase and lowercase  
-Automatically lock the keyboard uppercase when entering the password. After turning on this function, the password input will not be affected by the input method.
+</details>
 
-- Other keyboard layouts  
-The default keyboard layout is ANSI. If you need to change to AZERTY layout, please click "Device Options" to turn it on  
+> # One-key Web
+Windows only, same setup as password
 
----
+<details>
+<summary>Trigger Principle</summary>  
 
-> # One-click web page  
->
-> One-click to open the set URL  
+  *1. Win+R to open Run dialog + auto caps lock*  
+  *2. Wait ~500ms for window opening*  
+  *3. Send characters and Enter*  
+  *4. Restore CapsLock state*  
 
-!> Some devices do not support this function  
+</details>
 
-Applicable to Windows system  
-Setting method same key password  
+---  
 
----
+> # One-key Text
+Output preset text string
 
-> # One-click poetry  
->
-> One-click to output a string of text  
+!> Partial devices unsupported  
+**Potential shortcut conflicts.**  
+Windows only  
 
-!> Some devices do not support this function  
+Similar to password setup but input in **Text** tab with two encodings (GB18030/UTF16-LE)  
+Switch encoding if garbled characters appear  
+It is recommended to use the one-key password function for English content  
 
-!> ** There may be shortcut key conflicts. **  
-Function principle:  
-Press Alt+Number keys on the small numeric keyboard to directly enter the character code.  
-Applicable to Windows system  
+<details>
+<summary>Trigger Principle</summary>  
 
-The setting method is similar to one-key password, but enter the content in the **string** tab  
+*Input via Alt+Numpad code entry.*  
 
-Supports two encoding methods (GBK\Unicode)  
+</details>
 
-Different software may require **different** encodings. If you enter garbled characters, you can **switch to another encoding**  
+> # Shortcut *3
+Execute three consecutive shortcuts like **Select All+Copy+Tab Switch (Ctrl+A C T)**
 
----
+> # Loop Input
+Loop through 1-3 keys when held. Interval = n×6ms
 
-> # shortcut \*3  
+- **Cycle Down Arrow + Space**  
+![](/img/while_down_and_space.jpg)  
 
-!> Some devices do not support this function  
+> # Lock Mode
 
-In this mode, you can type three shortcut keys continuously, such as **select all+copy+switch tab card (Ctrl+A Ctrl+C Ctrl+TAB)**  
+- **Press to hold A, press again to release**  
+![](/img/key_mode_sl.jpg)  
 
----
+> # Gamepad Button
 
-> # Cycle input  
->
-> You can select 1~3 keys. When you hold down the keys, press them in sequence.   
-> Release the keys to stop  
-> Cycle interval n\*6 ms  
+!> Windows only. Do NOT enable on Mac.  
+If enabled by mistake, disable via Windows.  
 
-- **Cycle down direction+space**  
-![](img/while_down_and_space.jpg)  
+Enable **joystick** in Device Options' HID Features (save & replug).  
+Set mode to **Gamepad Button** and input ID (0-127 valid).  
+Requires game support for custom button mapping.
 
----
+> # Key-to-Axis
+Map linear key to joystick axis (requires Gamepad HID) or mouse movement (Relative Mouse)
 
-> # joystick button  
+!> Partial devices unsupported  
 
-!> This is an additional add-on and is only applicable to Windows. Do not enable it on Mac system.  
-If enabled by mistake, use Windows system to turn it off.  
+- Axis Options: X Y Z rX rY rZ 
+- Mouse Axes: X/Y
 
-In the device options, turn on the HID function of **joystick**, save and re-insert,  
-Change the button mode to **game controller**,  
-Then select the button number.  
-This button has nothing to do with any button on the game controller, and the game needs to support custom buttons.  
+- Alignment Modes  
+Left/Right/Center-left/Center-right
 
----
+> # Numlock Virtual Layer 
 
-> # key to axis
->
-> This mode can map a linear key to a joystick signal (need to enable device function: controller)  
-> or mouse cursor movement (need to enable device function: relative mouse)  
+- **Key=A when NumLock on, Key=B when off**  
+![](/img/num_sw.jpg)  
 
-!> Some devices do not support this function  
+> # FN Layer Switching  
 
-- Axis  
-Optional X Y Z rX rY rZ  
-- mouse X Y  
-Two direction axes of the mouse  
+!> Partial devices unsupported
 
-- Alignment  
-Optional left alignment, right alignment, center left alignment, center right alignment  
+1. Set key mode to **FN** and select target layer  
+2. Pressing switches layers temporarily  
 
----
+![](/img/FN.jpg)  
 
-> # Numlock virtual multi-layer  
+<details>
+<summary>Trigger Principle</summary>  
 
-!> _This mode is only applicable to devices whose hardware does not support FN layer_  
-_For devices that support FN layer, please use FN function_  
+  *1. Store current layer*  
+  *2. Switch to target layer*  
+  *3. Wait release*  
+  *4. Restore original layer*  
 
-- **When the number lock is turned on, the key is A, and when it is turned off, the key is B**  
-![](img/num_sw.jpg)  
+</details>
 
----
 
-> # Key layering (FN)  
+> # SW Layer Switching
 
-!> Some devices do not support this function  
+!> Partial devices unsupported
 
-1. Change a key mode to **FN** and select the target layer to switch to  
-2. Press this key and the keyboard will switch to another layer of functions  
-3. Release this key to return to the original layer  
+- Direct layer switch on press
 
-![](img/FN.jpg)  
+> # Bluetooth Device Switching
 
----
+!> Partial devices unsupported  
+Bluetooth mode only  
 
-> # Key Layering (SW)  
-
-!> Some devices do not support this function  
- 
-Similar to the FN function, but it will not return to the original layer when the key is released  
-
-> # Bluetooth Multi-device Switching (BLE_SW)  
-
-!> Some devices do not support this function  
-
-Only Bluetooth mode is valid  
-
-- Set a key to quickly switch devices  
-
-- If the device is not online, it will automatically enter pairing mode (white LED flashes)  
-
----
+- Set key for fast device switching  
+- Auto pairing mode (white LED blink) if device offline

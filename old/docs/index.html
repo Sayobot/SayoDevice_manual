@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Description">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <!-- Stylesheets -->
+<!-- Theme: Simple -->
+<link rel="stylesheet" href="/src/theme-simple.css">
+
+
+</head>
+<body>
+  <style>
+  :root {
+    --theme-hue: 325;
+  }
+  </style>
+  <div id="app"></div>
+  <script>
+    window.$docsify = {
+      name: 'SayoDevice manual',
+      repo: '',
+      fallbackLanguages: ['en'],
+      maxLevel: 8,
+      subMaxLevel: 3,
+      loadNavbar: true,
+      loadSidebar: true,
+      auto2top: true,
+      executeScript: true,
+      
+      relativePath: true,// 启用相对路径
+    search: 'auto', // 默认值
+
+    // 完整配置参数
+    search: {
+        maxAge: 3600000, // 过期时间，单位毫秒
+        paths: 'auto', // or 'auto'
+        placeholder: 'Type to search',
+
+        // 支持本地化
+        placeholder: {
+          '/en/': 'Type to search',
+          '/': '搜索',
+        },
+
+        noData: 'No Results!',
+
+        // 支持本地化
+        noData: {
+          '/en/': 'No Results',
+          '/': '找不到结果',
+        },
+
+        // 搜索标题的最大层级, 1 - 6
+        depth: 6,
+
+        hideOtherSidebarContent: false, // 是否隐藏其他侧边栏内容
+
+        // 避免搜索索引冲突
+        // 同一域下的多个网站之间
+        //namespace: 'manual',
+
+        // 使用不同的索引作为路径前缀（namespaces）
+        // 注意：仅适用于 paths: 'auto' 模式
+        //
+        // 初始化索引时，我们从侧边栏查找第一个路径
+        // 如果它与列表中的前缀匹配，我们将切换到相应的索引
+        pathNamespaces: ['/en'],
+
+        // 您可以提供一个正则表达式来匹配前缀。在这种情况下，
+        // 匹配到的字符串将被用来识别索引
+        //pathNamespaces: /^(\/(zh-cn|ru-ru))?(\/(v1|v2))?/
+      },
+      beian: {
+        ICP: "鲁ICP备19061843号",
+        NISMSP: {
+            number: "",
+            url: "https://beian.miit.gov.cn/",
+        },
+      },
+      themeable: {
+          readyTransition : true, // default
+          responsiveTables: true  // default
+      },
+      count:{
+        countable:true,
+        fontsize:'0.9em',
+        color:'rgb(90,90,90)',
+        language:'chinese'
+      },
+
+      //plugins: [
+      //  EditOnGithubPlugin.create("test")
+      //],
+    }
+  </script>
+  <!-- Docsify v4 -->
+  <script src="/src/docsify@4.js"></script>
+  <!-- 引入搜索模块 -->
+  <script src="/src/search.min.js"></script>
+
+  <!-- docsify-themeable -->
+  <script src="/src/docsify-themeable.min.js"></script>
+
+
+  <script src="/src/beian.min.js"></script>
+  <script src="/src/countable.js"></script>
+  <script src="/src/docsify-pagination.min.js"></script>
+  </div>
+</body>
+</html>

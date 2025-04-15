@@ -1,15 +1,14 @@
-# Select Your Device Type
+# Select your device type
 
-Please select the correct device type to view the relevant documentation.
+## [Key Configurations](./std/web_hid/README.md)  
 
-## [Keyboard Functions](std/README.md)
-Configure and customize your keyboard settings and functions.
+## [Wireless Options](./std/web_hid/rf_opt.md)  
 
-## [Wireless Options](ble/README.md)
-Set up and manage wireless connectivity for your device.
+## [Single Knob](./knob/README.md)  
 
-## [Volume Controller (Knob)](knob/README.md)
-Configure your volume control knob and related settings.
+## [LCD Built-in menu](./std/built_in_menu/README.md)  
 
-## [Screen Built-in Menu](std/built_in_menu/README.md)
-Access and customize the built-in menu system on your device's screen.
+## [60HE PCB](./60HE/README.md)  
+
+
+
