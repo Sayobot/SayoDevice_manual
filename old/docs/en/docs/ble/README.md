@@ -1,54 +1,88 @@
-# Welcome to SayoDevice
-### ☜Helpful directory on the left <!-- {docsify-ignore} -->
+# Wireless Device Options
 
-> ## Software address
-  ### No need to download, use the browser to open "[https://sayodevice.com](https://sayodevice.com)" to set the button <!-- {docsify-ignore} -->
-It is recommended to use [Chrome browser](https://www.google.cn/chrome/index.html) or **Edge browser**
+### ☜ Documentation Menu <!-- {docsify-ignore} -->
+*Use the menu on the left to navigate through the documentation*
 
-### [Download offline version](https://dl.sayobot.cn/setting_v3.zip) <!-- {docsify-ignore} -->
+> ## Software Access
 
+### No Installation Required <!-- {docsify-ignore} -->
+Simply open [https://app.sayodevice.com](https://app.sayodevice.com) in your browser to configure your device.
 
+We recommend using [Chrome](https://www.google.com/chrome) or **Microsoft Edge** browsers for optimal compatibility.
+
+### [Download Offline Version](https://dl.sayobot.cn/setting_v3.zip) <!-- {docsify-ignore} -->
+*For users who prefer an offline installation*
+
+---
+
+> ## Switching Between Wireless and Wired Modes
+
+Your device will automatically switch between modes:
+- When you connect the USB data cable, the device switches to wired mode
+- When you disconnect the USB data cable, the device returns to wireless mode
 
 ---
 
-> ## Wireless and wired switching  
+> ## Switching Between 2.4G and Bluetooth Modes
 
-Usually automatically.  
-Inserting the USB data cable automatically jumps to wired mode; unplugging the data cable automatically jumps to wireless mode.  
-
----
-> ## 2.4G/Bluetooth mode switching  
-
-Use a USB data cable to connect the keyboard; modify the wireless mode in the **option byte** of the software. After saving, unplug the data cable.
-
----
-> ## Bluetooth multi-machine switching  
-
-1. Use the USB data cable to connect the keyboard; set a button in the **Button** of the software to switch.  
-2. Change the button mode to "BLE_SW", and then select the host number corresponding to the button;  
-3. Save and unplug the data cable.  
-4. Press the button to switch to the corresponding device.  
-Note: If it is not paired or is not within the signal range, you can search for the device and re-pair it (the indicator light flashes white to wait for pairing).
-
----  
-> ## indicator light  
-
-     There are usually 6 indicator lights:  
-     ·White numlock indicator light or waiting for pairing (flashing)  
-     ·Green connection status lights up to indicate connected  
-     ·Red low battery The battery is less than 20%  
-     ·Blue battery indicator, 1 pc = 20%~50%, 2 pcs = 51%~75%, 3 pcs = 76%~100%  
+To change the wireless mode:
+1. Connect your device using a USB data cable
+2. Open the configuration software and go to **Device Options**
+3. Select your preferred wireless mode
+4. Save your settings
+5. Disconnect the USB data cable for the changes to take effect
 
 ---
-> ## Indicator time  
 
-- The indicator light will light up each time the button is pressed, and will turn off after a period of time to save power. The default is 5 seconds.  
-- You can set the time yourself, 0~255 seconds. 0 seconds is off.  
-Use a USB data cable to connect the keyboard; modify it in the **option byte** of the software. After saving, unplug the data cable.  
+> ## Bluetooth Multi-Device Switching
+
+To set up Bluetooth multi-device switching:
+1. Connect your device using a USB data cable
+2. Open the configuration software and go to the **Button** section
+3. Assign a button with the "BLE_SW" function
+4. Select the host number you want to associate with this button
+5. Save your settings and disconnect the USB data cable
+6. Press the configured button to switch between paired devices
+
+**Note:** If a device is not paired or out of signal range, your SayoDevice will enter pairing mode (indicated by a flashing white light).
 
 ---
-> ## Standby sleep time  
 
-- The keyboard will automatically sleep after a period of inactivity, the default is 15 minutes.  
-- You can modify the time yourself, up to 255 minutes (4.25 hours)  
-Use a USB data cable to connect the keyboard; modify it in the **option byte** of the software. After saving, unplug the data cable.  
+> ## Indicator Lights
+
+Your device typically has 6 indicator lights:
+- **White**: NumLock indicator or pairing status (flashing indicates waiting for pairing)
+- **Green**: Connection status (solid light indicates connected)
+- **Red**: Low battery warning (illuminates when battery is below 20%)
+- **Blue**: Battery level indicator
+  - 1 light = 20% to 50%
+  - 2 lights = 51% to 75%
+  - 3 lights = 76% to 100%
+
+---
+
+> ## Indicator Light Duration
+
+- The indicator light illuminates each time you press a button and turns off after a set period to conserve power
+- The default duration is 5 seconds
+- You can customize this duration from 0 to 255 seconds (setting to 0 disables the indicator)
+
+To adjust the indicator light duration:
+1. Connect your device using a USB data cable
+2. Open the configuration software and go to **Device Options**
+3. Modify the indicator light duration
+4. Save your settings and disconnect the USB data cable
+
+---
+
+> ## Power-Saving Sleep Mode
+
+- Your device will automatically enter sleep mode after a period of inactivity
+- The default sleep timer is 15 minutes
+- You can adjust this timer up to 255 minutes (4.25 hours)
+
+To modify the sleep timer:
+1. Connect your device using a USB data cable
+2. Open the configuration software and go to **Device Options**
+3. Adjust the standby sleep time
+4. Save your settings and disconnect the USB data cable
