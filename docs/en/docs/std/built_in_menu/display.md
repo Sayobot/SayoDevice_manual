@@ -1,53 +1,46 @@
-# Display
+# Display Settings  
 
-![there should have a image,please refresh the website](../../../../docs/std/built_in_menu/img/menu_display.png)
-![there should have a image,please refresh the website](/img/menu_en_display.png)
+> # Language  
 
-> ## Language 语言
+![Image missing? Try refreshing the page.](/img/menu_language.png)  
 
-![there should have a image,please refresh the website](../../../../docs/std/built_in_menu/img/menu_language.png)
-![there should have a image,please refresh the website](/img/menu_en_language.png)
+The device supports three languages: Simplified Chinese, English, and Japanese.  
 
-**中文** Set built in menu Language to Chinese
+---  
 
-**English** Set built in menu Language to English
+> # Backlight  
 
----
+![Image missing? Try refreshing the page.](/img/menu_backlight.png)  
 
-> ## Backlight
+### Standby Screen Off  
+If your **computer's USB remains powered after shutdown**, enabling this option will **turn off the display** when the computer is off.  
+However, the backlight will stay on. Do not worry—the backlight has a long lifespan.  
 
-![there should have a image,please refresh the website](/img/menu_en_backlight.png)
+### Screensaver Timeout  
+Sets the idle time before the screensaver activates.  
 
-### StandbyLight
+<small>~~Wouldn't it be better to configure this in the website?~~</small>  
 
-If your PC/Mac **don't cut off USB power after power off** **turn on** this option to **turn off built in screen** after power off your PC/Mac
+---  
 
-### ScreenSaver
+> # Main Screen  
 
-Set time to show sleep screen if you don't use it
+!> Selecting a template will overwrite your custom home screen settings.  
 
-<small>~~set it in web or software will be much easier~~</small>
+![Image missing? Try refreshing the page.](/img/menu_display.png)  
+![Image missing? Try refreshing the page.](/img/menu_template.png)  
 
----
+- **Template: default**  
+Sets the home screen to the default style preloaded on your keyboard.  
 
-> ## Main screen  
-**!!! important:choose any template will overwrite your custom main screen layout !!!**  
-**!!! all key layer use same one screen layout !!!**
+- **Template: bongocat**  
+Sets the home screen to the bongocat style preloaded on your keyboard.  
+~~This explanation feels redundant...~~  
 
-![there should have a image,please refresh the website](/img/menu_en_template.png)
+> # Keypress Counter  
 
-### template：default
+Choose the timeframe for the keypress counter displayed on the home screen:  
 
-Set screen to default layout
+**All** Counts from factory reset or the last **key counter reset**.  
 
-### template：bongocat
-
-Set screen to built in bongocat layout
-
-### key count
-
-Set how to count key stoke of the counter shows on screen
-
-**ALL** All key stroke from last time **reset key counter**
-
-**single** key stroke will begin
+**Single** Counts from the current power-on session.  

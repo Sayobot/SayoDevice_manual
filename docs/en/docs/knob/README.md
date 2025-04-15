@@ -1,17 +1,14 @@
+# Welcome to SayoDevice E1
 
-# Welcome to SayoDevice
-### ☜Helpful directory on the left <!-- {docsify-ignore} -->
+> ## Interface Guide
 
-> ## Software address
-  ### No need to download, use the browser to open "[https://sayodevice.com](https://sayodevice.com)" to set the button <!-- {docsify-ignore} -->
-It is recommended to use [Chrome browser](https://www.google.cn/chrome/index.html) or **Edge browser**
+1. Clockwise rotation
+2. Counterclockwise rotation
+3. Press and rotate clockwise
+4. Press and rotate counterclockwise
+5. Tap function (press and no rotation, trigger when released)
+6. Press function (press to trigger. Generally not used, leave blank)
 
-### [Download offline version](https://dl.sayobot.cn/setting_v3.zip) <!-- {docsify-ignore} -->
+![](img/main.png)  
 
-
-
----
-
-> ## Main Page
-![](img/main.jpg)  
 

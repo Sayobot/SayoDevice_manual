@@ -1,39 +1,39 @@
-# Device
 
-![there should have a image,please refresh the website](/img/menu_en_device.png)  
-![there should have a image,please refresh the website](/img/menu_en_reset.png)
+# Device Settings  
 
-> ## Refresh rate  
-Setting USB polling rate of keypad
+![Image missing? Try refreshing the page.](/img/menu_device.png)  
 
-![there should have a image,please refresh the website](/img/menu_en_pollingrate.png)
+> ## USB report Rate  
+Modify the USB polling rate  
 
----
+![Image missing? Try refreshing the page.](/img/menu_pollingrate.png)  
 
-> ## Device  
-About device
+---  
 
-![there should have a image,please refresh the website](/img/menu_en_about.png)
+> ## Device Info   
+No operational settings here  
 
-**HW** Hardware Versions  
-**FW** Firmware Versions
+![Image missing? Try refreshing the page.](/img/menu_about.png)  
 
----
+**HW** Hardware version (may be inaccurate)  
+**FW** Firmware version  
 
-> ## Key count  
-Total key stroke counter from last time reset it
+---  
 
-![there should have a image,please refresh the website](/img/menu_en_counter.png)  
-![there should have a image,please refresh the website](/img/menu_en_counter_reset.png)
+> ## Key Count  
+Displays the number of presses for each key since factory reset or the last counter reset  
 
-**Reset key count** Reset it
+![Image missing? Try refreshing the page.](/img/menu_counter_reset.png)  
 
----
+**Reset key count** Reset the keypress counter  
 
-> ## Factory recovery  
-**Will not reset Key counter**
+---  
 
-![there should have a image,please refresh the website](/img/menu_en_reset_1.png)
+> ## Factory Recovery  
+**Does not reset the keypress counter**  
 
-**Factory recovery** confirm reset keypad  
-**jump to bootloader** into bootloader mode for firmware update
+![Image missing? Try refreshing the page.](/img/menu_reset_1.png)  
+
+**Factory Reset** Confirms factory reset  
+**Jump to bootloader** Enters firmware update mode  
+**Reset image data** Clears custom images  

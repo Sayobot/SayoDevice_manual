@@ -1,37 +1,41 @@
-# Button
+# Button Settings  
 
-![there should have a image,please refresh the website](/img/menu_en_key.png)
+![Image missing? Try refreshing the page.](/img/menu_key.png)  
 
->## Calibration  
-**Press and release as fast as possible while calibration**
+> # Calibration  
+**Follow the prompts: press fully, then release. Do not apply excessive force.**  
 
-![there should have a image,please refresh the website](../../../../docs/std/built_in_menu/img/menu_cali.png)
+![Image missing? Try refreshing the page.](/img/menu_cali.png)  
 
-**Press knob** to calibration all key  
-**Rotate knob to select key than press knob** to calibration single key
+**Press the knob directly** Calibrates all keys.  
+**Rotate the knob to select a single key, then press** Calibrates individual keys.  
 
----
+---  
 
->## Key stroke  
-"RT" is Rapid Trigger  
-That's mean key trigger or reset by certain **distance** pressed or lifted  
-Recommend default settings for RT function in most situations
+> # Key stroke  
+```  
+RT stands for Rapid Trigger, which detects key presses/releases based on specific travel distances.  
+Recommended to use default values for RT functionality.  
+```  
 
-![there should have a image,please refresh the website](/img/menu_en_keyconfig.png)  
+![Image missing? Try refreshing the page.](/img/menu_keyconfig.png)  
 
-**Rotate knob to select key than press knob** to setting how trigger and reset each key
+**Rotate the knob to select a key, then press** to configure parameters for each key.  
 
-![there should have a image,please refresh the website](/img/menu_en_keyconfig_1.png)  
-![there should have a image,please refresh the website](/img/menu_en_keyconfig_2.png)  
-<small>in this two pictures，fixed height trigger/reset has be set to bottom/top of total travel，so it's not work</small>
+![Image missing? Try refreshing the page.](/img/menu_keyconfig_1.png)  
+![Image missing? Try refreshing the page.](/img/menu_keyconfig_2.png)  
 
-**Trigger** fixed height trigger  **default 0.3mm**  
-**Release** fixed height reset **default 0.2mm**
+**Trigger** Triggers like a mechanical switch at the set height (**default: 1.1mm**).  
+**Release** Releases like a mechanical switch at the set height (**default: 0.8mm**).  
 
-**RT Top** top dead zone of RT function, set to bottom to disable RT function **default 0.5mm**  
-**RT End** bottom dead zone of RT function, set to top to disable RT function **default 3.8mm**  
-**RT Trigger** in range of RT function(out of dead zone), trigger by how much distance pressed **default 0.2mm**  
-**RT Release** in range of RT function(out of dead zone), reset by how much distance lifted **default 0.2mm**
+**RT Top** The upper deadzone for RT. Set this to the bottom of the key travel to disable RT (**default: 1.5mm**).  
+**RT End** The lower deadzone for RT. Set this to the top of the key travel to disable RT (**default: 3.85mm**).  
+**RT Trigger** Distance to trigger within the RT zone (**default: 0.2mm**).  
+**RT Release** Distance to release within the RT zone (**default: 0.4mm**).  
 
-<small>RT function will be disabled if RT Trigger longer than RT range(RT End - RT Top)</small>  
-<small>RT function will be disabled if RT range = 0(RT End = RT Top)</small>
+<small>RT can also be disabled by setting RT Actuation/Release values larger than the RT zone bounds.</small>  
+<small>Setting RT Upper and Lower Bounds to the same height also disables RT.</small>  
+
+> # RT Test  
+
+On this page, press keys to check their trigger status. The color of the force bar indicates the current state.  

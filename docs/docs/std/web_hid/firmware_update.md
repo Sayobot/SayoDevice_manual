@@ -1,12 +1,14 @@
 
-> ## 固件更新
+> # 固件升级  
 
-1. 连接设备后，如果有可更新的内容将会提示。  
-![text](/img/firmware_update_note.jpg)  
 
-2. 在更新页面点**马上升级**
-![text](/img/firmware_update_check.jpg)  
+!> 升级过程中请保持电源稳定，不要拔下设备
 
-3. 第一次升级需要手动搜索设备，根据页面提示操作选择带有 **“Bootloader”、** **“BL DEV”**等字样的设备。
+1. 连接设备后，如果有可更新的内容将会提示。点击该图标即可进入升级模式。  
+![text](/img/firmware_update_note.png) 
+
+2. 第一次升级需要手动搜索设备，根据页面提示操作选择带有 **“Bootloader”、** **“BL DEV”**等字样的设备。
 连接成功后会自动升级，等待进度条跑完即可。
 ![text](/img/firmware_update_ing.jpg)  
+
+3. 如果升级过程中出现错误，或者长时间卡住不动，请刷新页面重试。
