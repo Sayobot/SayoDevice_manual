@@ -3,7 +3,8 @@
   * [New Version (Recommended)](https://app.sayodevice.com)  
   * [Old Version (Not Recommended)](https://old.sayodevice.com)  
 * **Desktop Version**  
-  * [Keyboard Setting New Version (Windows)](https://app.sayodevice.com/windows.zip)  
+  * [Keyboard Setting New Version (Windows)](https://app.sayodevice.com/windows_x64.zip)  
+  * [Keyboard Setting New Version (Linux)](https://app.sayodevice.com/linux_x64.tar.gz)  
   * [Screen Streaming Tool (Windows)](https://app.sayodevice.com/firmware/update/5/tools/SayoDeviceStreamingAssistant.zip)  
   * [Old Version V2 (Windows/Linux/MacOS)](https://dl.sayobot.cn/setting_v2.zip)  
   * [Old Version V3 (Windows)](https://dl.sayobot.cn/setting_v3.zip)  
