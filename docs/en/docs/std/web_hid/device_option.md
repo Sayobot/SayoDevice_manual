@@ -57,6 +57,7 @@ Modifies the display language of the device (if equipped with a screen).
 
 > ## Screen Width/Height  
 Reference resolution for cursor positioning in scripts. Typically auto-configured by software.  
+![](./img/screen_rect.png) 
 
 > ## USB Polling Rate  
 USB report rate selection. Default: 1000Hz.  
