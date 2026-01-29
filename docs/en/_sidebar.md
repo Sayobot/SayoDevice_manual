@@ -1,3 +1,3 @@
 <!-- docs/_sidebar.md -->
 
-* [主页](/README.md)
+* [Home](/README.md)
