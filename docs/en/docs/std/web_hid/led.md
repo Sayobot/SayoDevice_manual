@@ -1,6 +1,6 @@
 # Lighting Settings  
 
-> # Setting Colors  
+> ## Setting Colors  
 
 Select Static mode, set Color Mode to Static color:  
 - Set ice blue (#00ffff)  
@@ -8,11 +8,11 @@ Select Static mode, set Color Mode to Static color:
 
 Tip: Use **Eyedropper** for screen color picking
 
-> # Disable Lighting  
+> ## Disable Lighting  
 
 Set RGB(0,0,0)/#000000  
 
-> # Lighting Modes Explained  
+> ## Lighting Modes Explained  
 
 - Static  
 Static color. Combine with key events for press/release effects  
@@ -37,7 +37,7 @@ Requires trigger event
 - Fade In  
 Requires trigger event  
 
-> # Color Modes  
+> ## Color Modes  
 
 - Static color  
 Black=Off. Darker colors = lower brightness  
@@ -48,6 +48,6 @@ Random from palette
 - Random Color  
 Random Color
 
-> # Global Lighting Effects  
+> ## Global Lighting Effects  
 
 !> Partial devices only

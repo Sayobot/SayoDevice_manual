@@ -1,0 +1,17 @@
+[Unit]
+Description=Artalk Comment Server
+After=network.target
+
+[Service]
+Type=simple
+# 建议用非 root 用户运行。创建方式见 README：
+#   useradd --system --home /var/lib/artalk --shell /usr/sbin/nologin artalk
+User=artalk
+Group=artalk
+ExecStart=/usr/local/bin/artalk server -c /etc/artalk/artalk.yml
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

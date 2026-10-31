@@ -141,6 +141,7 @@ u32      // Unsigned 32-bit little-endian immediate
 reg      // Register  
 RGB888   // 24-bit color data  
 ```  
+- Strings beginning with "." are recognized as labels, which can be used by jump instructions.
 
 ## 3. Instruction List  
 <details>  
@@ -561,16 +562,16 @@ EXIT
 - Short press sends the A key (233 milliseconds), long press sends the B key
 ```  
 MOV8 R0 233  
-label_timeout:  
+.label_timeout:  
 SLEEP 1  
 JNZ KEY_IO label_shortpress  
 DJNZ R0 label_timeout  
-label_longpress:  
+.label_longpress:  
 PRESS_GK hidkey_B  
 WAIT_IF_PRESS  
 RELEASE_GK hidkey_B  
 EXIT  
-label_shortpress:  
+.label_shortpress:  
 PRESS_GK hidkey_A  
 SLEEP 35  
 RELEASE_GK hidkey_A  
@@ -584,15 +585,15 @@ MOV8 R1 16
 MOD_R R1 RANDOM R1
 ADD8 R1 65 ;Calculate the final required value and store it in R1
 MOV A R1
-loc_000e:
+.loc_000e:
 MOV8 B 10
 DIV_A
 INC R2
 JNZ A loc_000e ;Calculate how many bits are stored in R2 in a loop. At this time, the remainder saved in register B is the highest bit and can be directly typed
-loc_0018: ;The following is the bit-by-bit key operation.
+.loc_0018: ;The following is the bit-by-bit key operation.
 JNZ B loc_001f
 MOV8 B 10 ;If the value is 0, add 10 directly for easy calculation (the value of hidkey_0 is 0x27, hidkey_1 is 0x1e)
-loc_001f:
+.loc_001f:
 MOV A B
 ADD8_A 29 ;Add the value of (hidkey_1 minus 1)
 PRESS_GK_VAL A
@@ -603,12 +604,12 @@ DEC R2 ;The number of bits to be output - 1
 JZ R2 loc_0044 ;If there is no more, jump to exit
 MOV R0 R2
 MOV A R1
-loc_0038:
+.loc_0038:
 MOV8 B 10
 DIV_A
 DJNZ R0 loc_0038
 JZ R0 loc_0018 ; Jump after calculating the next digit
-loc_0044:
+.loc_0044:
 ```
 
 - Output prime numbers within 10000, and press any key to exit (Coder by DeepSeek)
@@ -623,31 +624,31 @@ SLEEP 5
 RELEASE_GK hidkey_Enter
 SLEEP 5
 MOV32 R0  2
-label_outer:
+.label_outer:
 MOV32 R1  2
 MOV R3  R0
 DEC R3
-label_inner:
+.label_inner:
 MOV A  R0
 MOV B  R1
 DIV_A
 JNZ B  label_not_div  
 JMP label_next_num  
-label_not_div:
+.label_not_div:
 INC R1
 CMP R1  R3
 JB R1  R3  label_inner
 MOV A  R0
 CLR R2
-label_calc_digits:
+.label_calc_digits:
 MOV8 B  10
 DIV_A
 INC R2
 JNZ A  label_calc_digits
-label_output:
+.label_output:
 JNZ B  label_non_zero
 MOV8 B  10
-label_non_zero:
+.label_non_zero:
 MOV A  B
 ADD8_A 29
 PRESS_GK_VAL A
@@ -658,17 +659,17 @@ DEC R2
 JZ R2  label_finish_num
 MOV R4  R2
 MOV A  R0
-label_shift:
+.label_shift:
 MOV8 B  10
 DIV_A
 DJNZ R4  label_shift
 JMP label_output
-label_finish_num:
+.label_finish_num:
 PRESS_GK hidkey_Enter
 SLEEP 5
 RELEASE_GK hidkey_Enter
 SLEEP 5
-label_next_num:
+.label_next_num:
 EXIT_IF_ANYKEY
 INC R0
 MOV32 R15  10000
@@ -681,7 +682,7 @@ EXIT
 MODE_JOG
 WAIT_IF_PRESS
 MOV16 A  150
-label_timeout:
+.label_timeout:
 SLEEP 1
 JZ KEY_IO  label_press2
 DJNZ A  label_timeout
@@ -689,7 +690,7 @@ PRESS_GK hidkey_A
 SLEEP 35
 RELEASE_GK hidkey_A
 EXIT
-label_press2:
+.label_press2:
 PRESS_GK hidkey_B
 SLEEP 35
 RELEASE_GK hidkey_B
@@ -699,7 +700,7 @@ EXIT
 - After pressing the key, "press A every 10 seconds, press B every 15 seconds, and add random delay to prevent game detection", press again to stop (default is in switch mode)
 ```
 MOV R0  SYS_TIME_S
-loc_0003:
+.loc_0003:
 MOV A  SYS_TIME_S
 SUB_A R0
 MOV8 B  10
@@ -711,7 +712,7 @@ SLEEP_RAND 20
 RELEASE_GK hidkey_A
 SLEEP 35
 SLEEP_RAND 128
-loc_001c:
+.loc_001c:
 MOV A  SYS_TIME_S
 SUB_A R0
 MOV8 B  15
@@ -722,7 +723,7 @@ SLEEP 35
 SLEEP_RAND 20
 RELEASE_GK hidkey_B
 SLEEP 35
-loc_0033:
+.loc_0033:
 MOV16 A  1000
 SUB_A SYS_TIME_MS
 SLEEP_VAL A

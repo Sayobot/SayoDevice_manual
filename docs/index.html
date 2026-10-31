@@ -10,6 +10,8 @@
 <!-- Theme: Simple -->
 <link rel="stylesheet" href="/src/theme-simple.css">
 
+<!-- 编辑此页插件（需在 window.$docsify 配置之前加载） -->
+<script src="/src/docsify-edit-on-github.js"></script>
 
 </head>
 <body>
@@ -22,7 +24,7 @@
   <script>
     window.$docsify = {
       name: 'SayoDevice manual',
-      repo: '',
+      repo: 'Sayobot/SayoDevice_manual',
       fallbackLanguages: ['en'],
       maxLevel: 8,
       subMaxLevel: 3,
@@ -92,9 +94,16 @@
         language:'chinese'
       },
 
-      //plugins: [
-      //  EditOnGithubPlugin.create("test")
-      //],
+      plugins: [
+        // 用户点击“编辑此页”→ GitHub 网页编辑器 → 提交 PR → 管理员审核后合并
+        EditOnGithubPlugin.create('https://github.com/Sayobot/SayoDevice_manual/blob/main/docs/', null, '编辑此页 / Edit on GitHub'),
+        // Artalk 评论：docsify 路由切换时重新注入「分节评论块」（实现见文末脚本）
+        function (hook) {
+          hook.doneEach(function () {
+            if (window.__artalkRender) window.__artalkRender();
+          });
+        },
+      ],
     }
   </script>
   <!-- Docsify v4 -->
@@ -106,9 +115,213 @@
   <script src="/src/docsify-themeable.min.js"></script>
 
 
-  <script src="/src/beian.min.js"></script>
   <script src="/src/countable.js"></script>
   <script src="/src/docsify-pagination.min.js"></script>
-  </div>
+
+  <!-- ===================== Artalk 分节评论（管理员审核 + 点赞） =====================
+       每个 ## 二级标题（侧边栏里的小 tab）下面各挂一个评论块，默认折叠、点开才加载。
+       - 根目录（主页 /README.md）与设备选择页（/device_select）不显示评论。
+       - pageKey = 完整 URL（origin + '/#' + 路由 + '?section=小节'），
+         不同小节、不同语言的评论互相独立，且 Artalk 后台能正确跳回该页面。
+       - 只按 h2 分节；若想按 h3 再细分，把下面 inject() 里的 'h2' 改成 'h2,h3' 即可。 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/artalk@2/dist/Artalk.css" />
+  <script src="https://cdn.jsdelivr.net/npm/artalk@2/dist/Artalk.js"></script>
+  <style>
+    .artalk-block { margin: 18px 0; }
+
+    /* 折叠态：紧凑的胶囊按钮，一眼能看出是可点的评论入口（而不是一个大空盒子） */
+    .artalk-block:not([open]) > summary {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      list-style: none;
+      padding: 7px 14px;
+      font-size: 13px;
+      color: #444;
+      background: #f4f4f4;
+      border: 1px solid #d8d8d8;
+      border-radius: 999px;
+      user-select: none;
+      transition: background .15s, border-color .15s, color .15s;
+    }
+    .artalk-block:not([open]) > summary:hover {
+      background: #eaeaea;
+      border-color: #bdbdbd;
+      color: #1a1a1a;
+    }
+    .artalk-block:not([open]) > summary::-webkit-details-marker { display: none; }
+    .artalk-block:not([open]) > summary::after { content: ' ▸'; font-size: 12px; color: #888; }
+
+    /* 展开态：全宽头部 + 评论内容 */
+    .artalk-block[open] {
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .artalk-block[open] > summary {
+      display: block;
+      cursor: pointer;
+      list-style: none;
+      padding: 10px 14px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #444;
+      background: #fafafa;
+      border-bottom: 1px solid #e0e0e0;
+      user-select: none;
+    }
+    .artalk-block[open] > summary::-webkit-details-marker { display: none; }
+    .artalk-block[open] > summary::after {
+      content: '收起 ▾';
+      float: right;
+      font-size: 12px;
+      color: #999;
+    }
+    .artalk-block[data-lang="en"][open] > summary::after {
+      content: 'Collapse ▾';
+    }
+    .artalk-mount { padding: 4px 12px 8px; }
+  </style>
+  <script>
+    (function () {
+      var server = 'https://comment.sayodevice.com';
+      var site = 'manual'; // Artalk 后台的站点名，必须与控制台「站点」里的一致（当前是 manual）
+      if (!server || typeof window.Artalk === 'undefined') return;
+
+      // ---- 路由判断：根目录（主页）与设备选择页不显示评论 ----
+      function normalizeRoute(r) {
+        return (r || '/').split('?')[0].replace(/\/+$/, '') || '/';
+      }
+      function commentsEnabled(r) {
+        var n = normalizeRoute(r);
+        if (n === '/' || n === '/README' || n === '/README.md') return false;      // 主页
+        if (n === '/device_select' || n.endsWith('/device_select')) return false;  // 设备选择页
+        return true;
+      }
+
+      // ---- 标题 -> 锚点 slug（用于 pageKey）----
+      function slug(text) {
+        return text.trim().toLowerCase()
+          .replace(/[^\w一-龥]+/g, '-')
+          .replace(/^-+|-+$/g, '')
+          .replace(/-{2,}/g, '-');
+      }
+
+      // ---- 多语言：英文内容在 /en/ 路由下，其余按中文 ----
+      var LANG_LABELS = {
+        zh: '💬 我来喵几句',
+        en: '💬 Leave a meow',
+      };
+      function detectLang(route) {
+        return (route === '/en' || route.indexOf('/en/') === 0) ? 'en' : 'zh';
+      }
+
+      var instances = []; // 已点开并初始化的 Artalk 实例（切路由时销毁）
+      var mountSeq = 0;   // 生成唯一挂载点 id
+
+      function createBlock(pageKey, title, lang) {
+        var details = document.createElement('details');
+        details.className = 'artalk-block';
+        details.setAttribute('data-lang', lang || 'zh');
+
+        var summary = document.createElement('summary');
+        summary.textContent = LANG_LABELS[lang] || LANG_LABELS.zh;
+
+        var mount = document.createElement('div');
+        mount.className = 'artalk-mount';
+        mount.id = 'artalk-mount-' + (++mountSeq);
+
+        details.appendChild(summary);
+        details.appendChild(mount);
+
+        // 默认折叠：只有用户点开时才真正初始化 Artalk（懒加载，避免一页 N 个实例）
+        details.addEventListener('toggle', function () {
+          if (!details.open || mount.__inited) return;
+          mount.__inited = true;
+          instances.push(window.Artalk.init({
+            el: '#' + mount.id,
+            server: server,
+            site: site,
+            pageKey: pageKey,
+            pageTitle: title,
+          }));
+        });
+
+        return details;
+      }
+
+      function inject(container, route) {
+        var headings = Array.prototype.slice.call(container.querySelectorAll('h2'));
+        if (!headings.length) return;
+
+        var lang = detectLang(route);
+
+        // 关键：h2 可能被 blockquote 等包裹（如 key.md 的 `> ## 标题`），
+        // 不能直接按 h2 的兄弟找边界，而要把它提升到「容器的直接子元素」这一层，
+        // 以这一层作为分节边界。
+        var anchors = headings.map(function (h2) {
+          var a = h2;
+          while (a.parentElement && a.parentElement !== container) a = a.parentElement;
+          return a;
+        });
+
+        // 翻页组件（docsify-pagination）挂在正文最末尾，最后一节的评论块要放在它之前
+        var pagination = container.querySelector('.docsify-pagination-container');
+
+        var used = {};
+        headings.forEach(function (h2, idx) {
+          var base = h2.id || slug(h2.textContent) || ('section-' + (idx + 1));
+          var key = base, n = 2;
+          while (used[key]) key = base + '-' + (n++);
+          used[key] = true;
+
+          // pageKey 用完整 URL（含 docsify 的 /#），Artalk 后台「跳转到页面」才会得到正确链接；
+          // 小节用查询参数 ?section= 区分（docsify 路由会忽略 query，只按 # 后的路径路由）。
+          var pageKey = location.origin + '/#' + route + '?section=' + key;
+          var block = createBlock(pageKey, h2.textContent.trim(), lang);
+
+          // 本节结束位置 = 下一小节的边界；最后一节插到翻页按钮之前
+          var end = idx + 1 < anchors.length ? anchors[idx + 1] : pagination;
+          container.insertBefore(block, end);
+        });
+      }
+
+      function teardown() {
+        instances.forEach(function (a) { try { a.destroy(); } catch (e) {} });
+        instances = [];
+      }
+
+      window.__artalkRender = function () {
+        teardown();
+        // 去掉 query（如后台跳转带来的 ?section=…），只取 docsify 路由路径
+        var route = (location.hash.slice(1) || '/').split('?')[0] || '/';
+        var container = document.querySelector('.markdown-section') ||
+                        document.querySelector('section.content') ||
+                        document.querySelector('main');
+        if (!container) return;
+        container.querySelectorAll('.artalk-block').forEach(function (el) { el.remove(); });
+        if (!commentsEnabled(route)) return;
+        inject(container, route);
+      };
+    })();
+  </script>
+
+  <!-- 备案信息：固定在页面最底部（位于评论之后） -->
+  <footer id="beian" style="text-align: center; padding: 28px 16px 36px; font-size: 14px;"></footer>
+  <script>
+    (function () {
+      var b = (window.$docsify && window.$docsify.beian) || {};
+      var el = document.getElementById('beian');
+      if (!el || !b.ICP) return;
+      var html = '<a style="text-decoration: none; color: #34495e; font-size: 15px; font-weight: 400;" href="https://beian.miit.gov.cn/#/Integrated/recordQuery" target="_blank">' + b.ICP + '</a>';
+      var n = b.NISMSP || {};
+      if (n.number && n.number.length) {
+        var href = n.id ? ('http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=' + n.id) : (n.url || '');
+        html += '&nbsp;&nbsp;<a style="text-decoration: none; color: #34495e; font-size: 15px; font-weight: 400;" href="' + href + '" target="_blank"><img style="width: 15px; height: 15px;" src="http://www.beian.gov.cn/img/new/gongan.png" alt="全国互联网安全" />' + n.number + '</a>';
+      }
+      el.innerHTML = html;
+    })();
+  </script>
 </body>
 </html>

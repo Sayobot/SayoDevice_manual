@@ -140,6 +140,7 @@ u32 无符号32位小端立即数
 reg 寄存器  
 RGB888 24位颜色数据  
 ```   
+- 「.」开头的字符串会被识别为标签（label），可供跳转指令使用
 
 ## 3.指令列表   
 <details>
@@ -559,16 +560,16 @@ EXIT
 - 短按发送A键(233毫秒)，长按发送B键  
 ```  
 MOV8 R0 233  
-label_timeout:  
+.label_timeout:  
 SLEEP 1  
 JNZ KEY_IO label_shortpress  
 DJNZ R0 label_timeout  
-label_longpress:  
+.label_longpress:  
 PRESS_GK hidkey_B  
 WAIT_IF_PRESS  
 RELEASE_GK hidkey_B  
 EXIT  
-label_shortpress:  
+.label_shortpress:  
 PRESS_GK hidkey_A  
 SLEEP 35  
 RELEASE_GK hidkey_A  
@@ -582,15 +583,15 @@ MOV8 R1  16
 MOD_R R1  RANDOM  R1
 ADD8 R1  65     ;计算得到最终需要的数值，存储到R1
 MOV A  R1
-loc_000e:
+.loc_000e:
 MOV8 B  10
 DIV_A
 INC R2
 JNZ A  loc_000e ;循环计算有多少位存储到R2，此时B寄存器保存的余数是最高位可以直接打出一位
-loc_0018:       ;以下是按位打出按键操作。
+.loc_0018:       ;以下是按位打出按键操作。
 JNZ B  loc_001f
 MOV8 B  10      ;如果数值是0,直接加10方便计算(hidkey_0的值是0x27,hidkey_1是0x1e)
-loc_001f:
+.loc_001f:
 MOV A  B
 ADD8_A 29       ;加上(hidkey_1 减 1)的值
 PRESS_GK_VAL A
@@ -601,12 +602,12 @@ DEC R2          ;待输出位数-1
 JZ R2  loc_0044 ;如果没有了就跳转到退出
 MOV R0  R2      
 MOV A  R1
-loc_0038:
+.loc_0038:
 MOV8 B  10
 DIV_A
 DJNZ R0  loc_0038
 JZ R0  loc_0018 ;计算出下一位后跳转
-loc_0044:
+.loc_0044:
 ```
 
 - 输出10000以内的质数，中途按下任意键退出（DeepSeek写的）
@@ -621,31 +622,31 @@ SLEEP 5
 RELEASE_GK hidkey_Enter
 SLEEP 5
 MOV32 R0  2
-label_outer:
+.label_outer:
 MOV32 R1  2
 MOV R3  R0
 DEC R3
-label_inner:
+.label_inner:
 MOV A  R0
 MOV B  R1
 DIV_A
 JNZ B  label_not_div  
 JMP label_next_num  
-label_not_div:
+.label_not_div:
 INC R1
 CMP R1  R3
 JB R1  R3  label_inner
 MOV A  R0
 CLR R2
-label_calc_digits:
+.label_calc_digits:
 MOV8 B  10
 DIV_A
 INC R2
 JNZ A  label_calc_digits
-label_output:
+.label_output:
 JNZ B  label_non_zero
 MOV8 B  10
-label_non_zero:
+.label_non_zero:
 MOV A  B
 ADD8_A 29
 PRESS_GK_VAL A
@@ -656,17 +657,17 @@ DEC R2
 JZ R2  label_finish_num
 MOV R4  R2
 MOV A  R0
-label_shift:
+.label_shift:
 MOV8 B  10
 DIV_A
 DJNZ R4  label_shift
 JMP label_output
-label_finish_num:
+.label_finish_num:
 PRESS_GK hidkey_Enter
 SLEEP 5
 RELEASE_GK hidkey_Enter
 SLEEP 5
-label_next_num:
+.label_next_num:
 EXIT_IF_ANYKEY
 INC R0
 MOV32 R15  10000
@@ -679,7 +680,7 @@ EXIT
 MODE_JOG
 WAIT_IF_PRESS
 MOV16 A  150
-label_timeout:
+.label_timeout:
 SLEEP 1
 JZ KEY_IO  label_press2
 DJNZ A  label_timeout
@@ -687,7 +688,7 @@ PRESS_GK hidkey_A
 SLEEP 35
 RELEASE_GK hidkey_A
 EXIT
-label_press2:
+.label_press2:
 PRESS_GK hidkey_B
 SLEEP 35
 RELEASE_GK hidkey_B
@@ -698,7 +699,7 @@ EXIT
 - 按下按键后“每隔10秒按一次A，每隔15秒按一次B，且加入随机延时防止游戏检测”，再按一次停止（默认处于开关模式）
 ```
 MOV R0  SYS_TIME_S
-loc_0003:
+.loc_0003:
 MOV A  SYS_TIME_S
 SUB_A R0
 MOV8 B  10
@@ -710,7 +711,7 @@ SLEEP_RAND 20
 RELEASE_GK hidkey_A
 SLEEP 35
 SLEEP_RAND 128
-loc_001c:
+.loc_001c:
 MOV A  SYS_TIME_S
 SUB_A R0
 MOV8 B  15
@@ -721,7 +722,7 @@ SLEEP 35
 SLEEP_RAND 20
 RELEASE_GK hidkey_B
 SLEEP 35
-loc_0033:
+.loc_0033:
 MOV16 A  1000
 SUB_A SYS_TIME_MS
 SLEEP_VAL A

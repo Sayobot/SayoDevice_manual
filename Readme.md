@@ -7,7 +7,7 @@ This is the official documentation for SayoDevice products. The manual provides 
 You can access the full documentation by:
 1. Opening the `docs/index.html` file in your web browser
 2. Running the included `run.bat` script (for Windows users)
-3. Visiting our online documentation at [https://app.sayodevice.com](https://app.sayodevice.com)
+3. Visiting our online documentation at [https://manual.sayodevice.com](https://manual.sayodevice.com)
 
 ## Language Options
 The documentation is available in:

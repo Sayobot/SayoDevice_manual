@@ -10,3 +10,7 @@
 - Feature updates
 - Magnetic axis parameters added
 - Script documentation updated
+
+> 2026.10.31
+- Script labels now use `.` prefix, e.g. `.label_timeout:`
+- Added per-section comments and adjusted heading levels

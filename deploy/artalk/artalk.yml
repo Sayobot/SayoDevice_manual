@@ -1,0 +1,31 @@
+# Artalk 后端配置（SQLite + Nginx 反代）
+# 完整配置项参考：https://artalk.js.org/guide/backend/config.html
+
+# 监听地址与端口
+# - 与 Nginx 同机：改成 127.0.0.1 更安全（只允许本机访问）
+# - 与 Nginx 不同机：保持 0.0.0.0，并用防火墙限制来源
+host: 127.0.0.1
+port: 23366
+
+# 登录 token 有效时长（单位：秒）。默认 259200 = 3 天。
+# 注意：0 不是「永不过期」，而是「立即过期」——签出来的 token 立刻失效，
+# 表现为「登录成功拿到 token，但后台一闪而过又弹回登录框」。
+login_timeout: 259200
+
+# 数据库：SQLite 单文件，够用
+db:
+  type: sqlite
+  file: /var/lib/artalk/artalk.db
+
+# 允许访问的前端来源（CORS）。必须包含你的文档站域名，
+# 否则前端会报 "Failed to load comments"。
+trusted_domains:
+  - https://manual.sayodevice.com
+  - https://comment.sayodevice.com
+  - http://localhost:3000   # 本地 docsify serve 调试用
+
+# 登录/认证：后台登录靠「邮箱密码登录」，必须开启。
+# 如果登录时看到 "Email auth is not enabled"，就是这里被设成了 false。
+auth:
+  email:
+    enabled: true

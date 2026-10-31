@@ -1,7 +1,7 @@
 
 # Key Bindings
 
-> # Setting Keys  
+> ## Setting Keys  
 
 1. Select **Default** key mode  
 2. Click the box below to choose keyboard keys:  
@@ -25,7 +25,7 @@
 
 </details>
 
-> # Setting Shortcut Combinations
+> ## Setting Shortcut Combinations
 
 - **Setting Copy shortcut Ctrl+C**  
 ![](/img/Ctrl+C.jpg)
@@ -44,7 +44,7 @@
 
 </details>
 
-> # Setting Two-Step Key
+> ## Setting Two-Step Key
 
 !> This mode executes one shortcut when pressed and another when released  
 
@@ -61,7 +61,7 @@
 
 </details>
 
-> # Tap/Hold Functionality  
+> ## Tap/Hold Functionality  
 
 !> Not suitable for rotary encoders
 
@@ -82,7 +82,7 @@
 
 </details>
 
-> # Mouse Mode  
+> ## Mouse Mode  
 Set keys as **Left/Right/Middle Click** or **Cursor Movement/Wheel Scroll**  
 
 - **Setting Left Click**  
@@ -104,7 +104,7 @@ Larger values mean faster movement.
 Continuous 50ms interval movement when holding key  
 ```
 
-> # Media Controls  
+> ## Media Controls  
 System volume control, track switching, screen brightness etc.  
 
 !> Brightness control only works for laptops or displays supporting system-level adjustment  
@@ -115,7 +115,7 @@ System volume control, track switching, screen brightness etc.
   *Repeat Count triggers multiple presses (1-255 times)*
 ---  
 
-> # Keyboard+LED Control  
+> ## Keyboard+LED Control  
 
 !> *This mode sends LED status keys before/after shortcuts to update indicators*  
 *Shortcuts can be empty for pure LED control*  
@@ -132,13 +132,13 @@ System volume control, track switching, screen brightness etc.
 
 </details>
 
-> # A+B+C+D Mode
+> ## A+B+C+D Mode
 *Press selected keys sequentially then release together*  
 *For strict key sequence requirements or short key sets.*  
 *Max 4 keys*  
 
 
-> # One-key Password
+> ## One-key Password
 *Type preset ASCII string automatically*  
 
 - **Set auto-type "123456"+Enter**  
@@ -169,7 +169,7 @@ Default ANSI layout. Enable AZERTY in Device Options if needed
 
 </details>
 
-> # One-key Web
+> ## One-key Web
 Windows only, same setup as password
 
 <details>
@@ -184,7 +184,7 @@ Windows only, same setup as password
 
 ---  
 
-> # One-key Text
+> ## One-key Text
 Output preset text string
 
 !> Partial devices unsupported  
@@ -202,21 +202,21 @@ It is recommended to use the one-key password function for English content
 
 </details>
 
-> # Shortcut *3
+> ## Shortcut *3
 Execute three consecutive shortcuts like **Select All+Copy+Tab Switch (Ctrl+A C T)**
 
-> # Loop Input
+> ## Loop Input
 Loop through 1-3 keys when held. Interval = n×6ms
 
 - **Cycle Down Arrow + Space**  
 ![](/img/while_down_and_space.jpg)  
 
-> # Lock Mode
+> ## Lock Mode
 
 - **Press to hold A, press again to release**  
 ![](/img/key_mode_sl.jpg)  
 
-> # Gamepad Button
+> ## Gamepad Button
 
 !> Windows only. Do NOT enable on Mac.  
 If enabled by mistake, disable via Windows.  
@@ -225,7 +225,7 @@ Enable **joystick** in Device Options' HID Features (save & replug).
 Set mode to **Gamepad Button** and input ID (0-127 valid).  
 Requires game support for custom button mapping.
 
-> # Key-to-Axis
+> ## Key-to-Axis
 Map linear key to joystick axis (requires Gamepad HID) or mouse movement (Relative Mouse)
 
 !> Partial devices unsupported  
@@ -236,12 +236,12 @@ Map linear key to joystick axis (requires Gamepad HID) or mouse movement (Relati
 - Alignment Modes  
 Left/Right/Center-left/Center-right
 
-> # Numlock Virtual Layer 
+> ## Numlock Virtual Layer 
 
 - **Key=A when NumLock on, Key=B when off**  
 ![](/img/num_sw.jpg)  
 
-> # FN Layer Switching  
+> ## FN Layer Switching  
 
 !> Partial devices unsupported
 
@@ -261,13 +261,13 @@ Left/Right/Center-left/Center-right
 </details>
 
 
-> # SW Layer Switching
+> ## SW Layer Switching
 
 !> Partial devices unsupported
 
 - Direct layer switch on press
 
-> # Bluetooth Device Switching
+> ## Bluetooth Device Switching
 
 !> Partial devices unsupported  
 Bluetooth mode only  
