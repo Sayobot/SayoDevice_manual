@@ -1,7 +1,7 @@
 <!-- docs/_sidebar.md -->
 
 * [Home](/README.md)
-* [Confihuration Page](./README.md)
+* [Configuration Page](./README.md)
 * [Key binding](./key.md)
 * [Light](./led.md)
 * [Color Tables](./palette.md)
