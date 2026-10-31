@@ -235,17 +235,51 @@
         details.appendChild(summary);
         details.appendChild(mount);
 
+        // 提交前校验名称/邮箱，用本地化文案提示（Artalk 的提交按钮是 type=button，
+        // 不触发浏览器原生 required 校验，空名称会直接打到后端并返回中文错误）。
+        function beforeSubmit(editor, submit) {
+          var nameEl = mount.querySelector('.atk-header [name="name"]');
+          var emailEl = mount.querySelector('.atk-header [name="email"]');
+          var name = (nameEl && nameEl.value || '').trim();
+          var email = (emailEl && emailEl.value || '').trim();
+          var msg = '';
+          if (!name) msg = lang === 'en' ? 'Name is required' : '昵称必须填写';
+          else if (!email) msg = lang === 'en' ? 'Email is required' : '邮箱必须填写';
+          else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) msg = lang === 'en' ? 'Invalid email address' : '邮箱格式不正确';
+          if (msg) {
+            var shown = false;
+            try {
+              var ed = (editor && editor.kit && editor.kit.useEditor) ? editor.kit.useEditor() : editor;
+              if (ed && typeof ed.showNotify === 'function') { ed.showNotify(msg, 'e'); shown = true; }
+            } catch (err) {}
+            if (!shown) window.alert(msg);
+            return;
+          }
+          submit();
+        }
+
         // 默认折叠：只有用户点开时才真正初始化 Artalk（懒加载，避免一页 N 个实例）
         details.addEventListener('toggle', function () {
           if (!details.open || mount.__inited) return;
           mount.__inited = true;
-          instances.push(window.Artalk.init({
+          var instance = window.Artalk.init({
             el: '#' + mount.id,
             server: server,
             site: site,
             pageKey: pageKey,
             pageTitle: title,
-          }));
+            locale: lang === 'en' ? 'en' : 'zh-CN', // 英文页用英文界面，中文页用中文界面
+            beforeSubmit: beforeSubmit,
+          });
+          instances.push(instance);
+
+          // 网址字段标注为“选填”
+          function applyLinkPlaceholder() {
+            var link = mount.querySelector('.atk-header [name="link"]');
+            if (link) link.placeholder = lang === 'en' ? 'Website (optional)' : '网址（选填）';
+          }
+          if (typeof instance.on === 'function') instance.on('mounted', applyLinkPlaceholder);
+          setTimeout(applyLinkPlaceholder, 0);
         });
 
         return details;
